@@ -77,8 +77,10 @@
     }
 
     .hero-text {
-      text-align: center;
-      margin-top: -10px; /* Ajustement pour être proche de l'image */
+      position: absolute;
+      top: calc(100% + 15px); /* 15 pixels plus bas par rapport à l'image */
+      right: 15px; /* Aligne le texte à droite de l'image */
+      text-align: right;
       font-size: 20px;
       font-weight: bold;
       text-transform: uppercase;
@@ -135,6 +137,8 @@
     @media (max-width: 480px) {
       .hero-text {
         font-size: 16px;
+        top: calc(100% + 10px); /* Ajuste l'espace pour les écrans plus petits */
+        right: 10px;
       }
 
       .hero img.car {
