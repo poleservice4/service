@@ -41,24 +41,24 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 250px; /* Ajustez si nécessaire */
+      height: 250px; /* Adjust as needed */
       overflow: hidden;
     }
     .hero img.bg {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Pour garder les proportions */
+      object-fit: cover; /* Keeps the aspect ratio */
     }
     .hero img.overlay {
       position: absolute;
-      bottom: -60px; /* Distance depuis le bas */
-      left: 10px; /* Distance depuis la gauche */
-      width: 50%; /* Ajustez selon vos besoins */
-      max-width: 250px; /* Limite maximale */
+      bottom: 10px; /* Distance from the bottom */
+      left: 10px; /* Distance from the left */
+      width: 50%; /* Adjust according to your needs */
+      max-width: 250px; /* Maximum size limit */
     }
     .hero h1 {
       position: absolute;
-      bottom: 50px; /* Positionnez le texte au-dessus de l'image overlay */
+      bottom: 80px; /* Place the text above the car */
       left: 20px;
       font-size: 18px;
       background-color: rgba(0, 0, 0, 0.6);
@@ -97,24 +97,23 @@
 </head>
 <body>
   <div class="container">
-    <!-- En-tête -->
+    <!-- Header -->
     <header>
       <div class="logo">MOBILIZE <span>R-WAY</span></div>
       <div class="menu-icon">☰</div>
     </header>
-<div >
-  <!-- Voiture en overlay -->
-      <img src="images/voiture.PNG" alt="Voiture Mobilize" class="overlay">
-</div>
-    <!-- Section Hero -->
+
+    <!-- Hero Section -->
     <div class="hero">
-      <!-- Première image paysage -->
+      <!-- Background image -->
       <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
-      
+      <!-- Overlay car image -->
+      <img src="images/voiture.PNG" alt="Voiture Mobilize" class="overlay">
+      <!-- Text -->
       <h1>Vers l'infini et au-delà</h1>
     </div>
 
-    <!-- Section Slow Travel -->
+    <!-- Slow Travel Section -->
     <div class="slow-travel">
       <h2>Le <span>Slow Travel</span></h2>
       <p>
@@ -123,7 +122,7 @@
       <p>
         Le slow travel invite à choisir des destinations proches pour réduire l’empreinte carbone, à privilégier des hébergements locaux et à consommer de manière responsable.
       </p>
-      <!-- Deuxième image paysage -->
+      <!-- Secondary image -->
       <img src="images/paysage2.JPG" alt="Paysage 2">
       <button>Voyager</button>
     </div>
