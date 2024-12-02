@@ -78,10 +78,10 @@
 
     .hero-text {
       position: absolute;
-      top: calc(100% + 15px); /* 15 pixels plus bas par rapport à l'image */
-      right: 15px; /* Aligne le texte à droite de l'image */
+      bottom: 15px; /* 15 pixels au-dessus du bas de l'image */
+      right: 15px; /* Décalage de 15 pixels depuis le bord droit */
       text-align: right;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -137,8 +137,8 @@
     @media (max-width: 480px) {
       .hero-text {
         font-size: 16px;
-        top: calc(100% + 10px); /* Ajuste l'espace pour les écrans plus petits */
-        right: 10px;
+        bottom: 10px; /* Réduit l'espace en bas pour les petits écrans */
+        right: 10px; /* Réduit le décalage à droite */
       }
 
       .hero img.car {
@@ -172,11 +172,10 @@
       <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
       <!-- Car image positioned on top of the background image -->
       <img src="images/voiture.PNG" alt="Voiture Mobilize" class="car">
-    </div>
-
-    <!-- Text below the hero section -->
-    <div class="hero-text">
-      Vers l'infini et <br><span>au-delà</span>
+      <!-- Text positioned at the bottom-right -->
+      <div class="hero-text">
+        Vers l'infini et <br><span>au-delà</span>
+      </div>
     </div>
 
     <!-- Content Section -->
