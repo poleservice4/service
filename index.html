@@ -73,10 +73,10 @@
 
     .hero img.overlay {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 35%; /* Taille ajustée */
-      max-width: 150px;
+      bottom: -50%; /* Fait dépasser l'image de moitié vers le bas */
+      left: 0;
+      width: 40%; /* Ajuster la largeur de l'image si nécessaire */
+      object-fit: cover; /* Préserve les proportions de l'image */
     }
 
     .hero h1 {
