@@ -14,7 +14,7 @@
     }
 
     .container {
-      max-width: 375px; /* Matches the mobile design */
+      max-width: 375px; /* Correspond à un affichage mobile */
       margin: 0 auto;
       background-color: #121212;
       border-radius: 20px;
@@ -23,84 +23,95 @@
     }
 
     header {
+      position: relative;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: flex-start;
       padding: 15px 20px;
       background-color: #000;
     }
 
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
+    .logo-container {
+      display: flex;
+      align-items: center;
     }
 
-    .logo span {
-      color: orange;
+    .logo-container img {
+      height: 25px;
+      margin-right: 10px; /* Espace entre les logos */
     }
 
     .menu-icon {
+      margin-left: auto;
       font-size: 20px;
       cursor: pointer;
+      color: #fff;
     }
 
     .hero {
       position: relative;
       width: 100%;
-      height: 300px; /* Adjust height based on content */
+      height: 300px; /* Hauteur de la section héro */
       overflow: hidden;
     }
 
     .hero img.bg {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Maintains image aspect ratio */
+      object-fit: cover; /* Préserve les proportions de l'image */
     }
 
     .hero img.overlay {
       position: absolute;
-      bottom: 20px; /* Slightly above the edge */
+      bottom: 20px;
       left: 20px;
-      width: 30%; /* Adjust size for consistency */
+      width: 35%; /* Taille ajustée */
       max-width: 150px;
     }
 
     .hero h1 {
       position: absolute;
-      bottom: 100px; /* Position above overlay image */
+      bottom: 80px; /* Position du texte au-dessus de la voiture */
       left: 20px;
-      font-size: 20px;
-      color: orange; /* Highlighted text color */
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px 15px;
-      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
     }
 
-    .slow-travel {
-      padding: 20px;
+    .hero h1 span {
+      color: orange; /* Couleur d'accentuation */
+    }
+
+    .content {
       text-align: center;
+      padding: 20px;
     }
 
-    .slow-travel h2 {
-      font-size: 24px;
-      color: orange;
+    .content h2 {
+      font-size: 22px;
+      color: #fff;
       margin-bottom: 15px;
     }
 
-    .slow-travel p {
+    .content h2 span {
+      color: orange; /* Couleur de l'accent */
+    }
+
+    .content p {
       font-size: 14px;
       line-height: 1.5;
       margin-bottom: 15px;
-      text-align: justify; /* Align text for better readability */
+      text-align: justify;
     }
 
-    .slow-travel img {
+    .content img {
       width: 100%;
       border-radius: 10px;
       margin: 20px 0;
     }
 
-    .slow-travel button {
+    .content button {
       padding: 12px 20px;
       background-color: orange;
       color: #fff;
@@ -108,29 +119,29 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
-    .slow-travel button:hover {
-      background-color: #ff9900; /* Brighter shade on hover */
+    .content button:hover {
+      background-color: #ff9900;
     }
 
     /* Responsive Design */
     @media (max-width: 480px) {
       .hero h1 {
         font-size: 16px;
-        padding: 8px 10px;
+        bottom: 60px;
       }
 
       .hero img.overlay {
-        width: 40%;
+        width: 45%;
       }
 
-      .slow-travel p {
+      .content p {
         font-size: 12px;
       }
 
-      .slow-travel button {
+      .content button {
         font-size: 14px;
         padding: 10px 16px;
       }
@@ -141,7 +152,10 @@
   <div class="container">
     <!-- Header Section -->
     <header>
-      <div class="logo">MOBILIZE <span>R-WAY</span></div>
+      <div class="logo-container">
+        <img src="logo:mobilize" alt="Logo Mobilize">
+        <img src="logo:rway" alt="Logo R-Way">
+      </div>
       <div class="menu-icon">☰</div>
     </header>
 
@@ -152,11 +166,12 @@
       <!-- Overlay car image -->
       <img src="images/voiture.PNG" alt="Voiture Mobilize" class="overlay">
       <!-- Text -->
-      <h1>Vers l'infini et au-delà</h1>
+      <h1>Vers l'infini et <span>au-delà</span></h1>
     </div>
 
-    <!-- Slow Travel Section -->
-    <div class="slow-travel">
+    <!-- Content Section -->
+    <div class="content">
+      <h2>En savoir plus sur notre <span>concept</span></h2>
       <h2>Le <span>Slow Travel</span></h2>
       <p>
         Le principe central du slow travel est de prendre le temps de s’immerger, de mieux comprendre les lieux visités et de se connecter à son pays. Cela inclut des séjours prolongés dans une région, des modes de transport plus doux et un respect accru pour l’environnement.
@@ -171,4 +186,3 @@
   </div>
 </body>
 </html>
-
