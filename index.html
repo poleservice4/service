@@ -76,20 +76,15 @@
       width: 60%; /* Ajuste la taille de l'image de la voiture */
     }
 
-    .hero h1 {
-      position: absolute;
-      top: 50%; /* Centré verticalement par rapport à la section hero */
-      left: 50%; /* Centré horizontalement */
-      transform: translate(-50%, -50%); /* Permet un alignement parfait */
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      text-transform: uppercase;
+    .hero-text {
       text-align: center;
-      z-index: 2;
+      margin-top: -10px; /* Ajustement pour être proche de l'image */
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
-    .hero h1 span {
+    .hero-text span {
       color: #f84300; /* Teinte orange mise à jour */
     }
 
@@ -138,7 +133,7 @@
 
     /* Responsive Design */
     @media (max-width: 480px) {
-      .hero h1 {
+      .hero-text {
         font-size: 16px;
       }
 
@@ -173,10 +168,11 @@
       <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
       <!-- Car image positioned on top of the background image -->
       <img src="images/voiture.PNG" alt="Voiture Mobilize" class="car">
-      <!-- Text -->
-      <h1>
-        Vers l'infini et <br><span>au-delà</span>
-      </h1>
+    </div>
+
+    <!-- Text below the hero section -->
+    <div class="hero-text">
+      Vers l'infini et <br><span>au-delà</span>
     </div>
 
     <!-- Content Section -->
@@ -196,4 +192,3 @@
   </div>
 </body>
 </html>
-
