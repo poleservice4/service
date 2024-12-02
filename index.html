@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     /* Global Styles */
     body {
       margin: 0;
-      font-family: 'Poppins', Arial, sans-serif; /* Typographie moderne */
+      font-family: 'Inter', 'Roboto', Arial, sans-serif; /* Typographie principale */
       background-color: #000;
       color: #fff;
     }
@@ -33,12 +33,14 @@
       background-color: #000;
     }
 
-    .logo-container img:first-child {
-      height: 15px;
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .logo-container img:last-child {
-      height: 30px;
+    .logo-container img {
+      margin-bottom: 10px;
     }
 
     .menu-icon {
@@ -63,28 +65,26 @@
 
     .hero img.car {
       position: absolute;
-      bottom: -20px;
+      bottom: -20px; /* Ajuste la position pour dépasser légèrement */
       left: 0;
-      width: 60%;
+      width: 60%; /* Ajuste la taille de l'image de la voiture */
     }
 
     .hero h1 {
       position: absolute;
-      top: 50%; 
-      left: 50%; 
-      transform: translate(-50%, -50%);
-      font-size: 18px;
-      font-weight: 600; /* Semi-bold */
-      text-transform: uppercase; /* Texte en majuscules */
-      letter-spacing: 1px; /* Espacement léger */
-      text-align: center;
+      top: 50%; /* Centré verticalement par rapport à la section hero */
+      left: 50%; /* Centré horizontalement */
+      transform: translate(-50%, -50%); /* Permet un alignement parfait */
+      font-size: 20px;
+      font-weight: 700; /* Gras pour correspondre au style de Mobilize */
       color: #fff;
+      text-transform: uppercase;
+      text-align: center;
       z-index: 2;
     }
 
     .hero h1 span {
-      color: #f84300; 
-      font-weight: 700; /* Plus gras pour attirer l'attention */
+      color: #f84300;
     }
 
     .content {
@@ -94,11 +94,9 @@
 
     .content h2 {
       font-size: 22px;
-      font-weight: 600; /* Semi-bold */
+      font-weight: 500; /* Semi-gras */
       color: #fff;
       margin-bottom: 15px;
-      text-transform: uppercase; /* Majuscules pour les titres */
-      letter-spacing: 1px;
     }
 
     .content h2 span {
@@ -107,16 +105,10 @@
 
     .content p {
       font-size: 14px;
-      font-weight: 300; /* Texte léger */
-      line-height: 1.8;
+      line-height: 1.5;
       margin-bottom: 15px;
       text-align: justify;
-    }
-
-    .content img {
-      width: 100%;
-      border-radius: 10px;
-      margin: 20px 0;
+      font-weight: 400; /* Normal */
     }
 
     .content button {
@@ -126,15 +118,13 @@
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      font-weight: 600; /* Semi-bold pour le bouton */
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .content button:hover {
-      background-color: #ff5733;
+      background-color: #ff9900;
     }
 
     /* Responsive Design */
@@ -170,8 +160,11 @@
 
     <!-- Hero Section -->
     <div class="hero">
+      <!-- Background image -->
       <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
+      <!-- Car image positioned on top of the background image -->
       <img src="images/voiture.PNG" alt="Voiture Mobilize" class="car">
+      <!-- Text -->
       <h1>
         Vers l'infini et <br><span>au-delà</span>
       </h1>
@@ -187,6 +180,7 @@
       <p>
         Le slow travel invite à choisir des destinations proches pour réduire l’empreinte carbone, à privilégier des hébergements locaux et à consommer de manière responsable.
       </p>
+      <!-- Secondary image -->
       <img src="images/paysage2.JPG" alt="Paysage 2">
       <button>Voyager</button>
     </div>
