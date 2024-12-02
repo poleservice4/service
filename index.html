@@ -4,33 +4,126 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles intégrés */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .container {
+      width: 375px;
+      margin: 0 auto;
+      background-color: #121212;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: #000;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .logo span {
+      color: orange;
+    }
+    .menu-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .hero {
+      position: relative;
+    }
+    .hero img {
+      width: 100%;
+    }
+    .hero h1 {
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+      font-size: 18px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .hero button {
+      display: block;
+      margin: 15px auto 10px;
+      padding: 10px 20px;
+      background-color: orange;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .slow-travel {
+      padding: 20px;
+      text-align: center;
+    }
+    .slow-travel h2 {
+      color: orange;
+      margin-bottom: 10px;
+    }
+    .slow-travel p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .slow-travel img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+    .slow-travel button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: orange;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="phone-container">
+  <div class="container">
+    <!-- En-tête -->
     <header>
       <div class="logo">MOBILIZE <span>R-WAY</span></div>
       <div class="menu-icon">☰</div>
     </header>
-    <div class="content">
-      <div class="hero">
-        <img src="hero-image.jpg" alt="Concept Mobilize R-Way">
-        <h1>Vers l'infini et au-delà</h1>
-        <button>En savoir plus sur notre concept</button>
-      </div>
-      <section class="slow-travel">
-        <h2>Le <span>Slow Travel</span></h2>
-        <p>
-          Le principe central du slow travel est de prendre le temps de s’immerger, de mieux comprendre les lieux visités et de se connecter à son pays. Cela inclut des séjours prolongés dans une région, des modes de transport plus doux et un respect accru pour l’environnement.
-        </p>
-        <p>
-          Le slow travel invite à choisir des destinations proches pour réduire l’empreinte carbone, à privilégier des hébergements locaux et à consommer de manière responsable en soutenant l’économie locale.
-        </p>
-        <img src="slow-travel.jpg" alt="Paysage slow travel">
-        <button>Voyager</button>
-      </section>
+
+    <!-- Section Hero -->
+    <div class="hero">
+      <!-- Première image paysage -->
+      <img src="images/paysage1.JPG" alt="Paysage 1">
+      <!-- Voiture en avant-plan -->
+      <img src="images/voiture.PNG" alt="Voiture Mobilize" style="position: absolute; bottom: 0; width: 100%;">
+      <h1>Vers l'infini et au-delà</h1>
+    </div>
+
+    <!-- Section Slow Travel -->
+    <div class="slow-travel">
+      <h2>Le <span>Slow Travel</span></h2>
+      <p>
+        Le principe central du slow travel est de prendre le temps de s’immerger, de mieux comprendre les lieux visités et de se connecter à son pays. Cela inclut des séjours prolongés dans une région, des modes de transport plus doux et un respect accru pour l’environnement.
+      </p>
+      <p>
+        Le slow travel invite à choisir des destinations proches pour réduire l’empreinte carbone, à privilégier des hébergements locaux et à consommer de manière responsable.
+      </p>
+      <!-- Deuxième image paysage -->
+      <img src="images/paysage2.JPG" alt="Paysage 2">
+      <button>Voyager</button>
     </div>
   </div>
 </body>
 </html>
-
