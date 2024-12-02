@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
   <style>
-    /* Styles intégrés */
+    /* Styles globaux */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -40,29 +40,30 @@
     }
     .hero {
       position: relative;
-    }
-    .hero img {
       width: 100%;
+      height: 250px; /* Ajustez si nécessaire */
+      overflow: hidden;
+    }
+    .hero img.bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Pour garder les proportions */
+    }
+    .hero img.overlay {
+      position: absolute;
+      bottom: 10px; /* Distance depuis le bas */
+      left: 10px; /* Distance depuis la gauche */
+      width: 40%; /* Ajustez selon vos besoins */
+      max-width: 150px; /* Limite maximale */
     }
     .hero h1 {
       position: absolute;
-      bottom: 30px;
+      bottom: 50px; /* Positionnez le texte au-dessus de l'image overlay */
       left: 20px;
       font-size: 18px;
       background-color: rgba(0, 0, 0, 0.6);
       padding: 10px;
       border-radius: 5px;
-    }
-    .hero button {
-      display: block;
-      margin: 15px auto 10px;
-      padding: 10px 20px;
-      background-color: orange;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
     }
     .slow-travel {
       padding: 20px;
@@ -105,9 +106,9 @@
     <!-- Section Hero -->
     <div class="hero">
       <!-- Première image paysage -->
-      <img src="images/paysage1.JPG" alt="Paysage 1">
-      <!-- Voiture en avant-plan -->
-      <img src="images/voiture.PNG" alt="Voiture Mobilize" style="position: absolute; bottom: 0; width: 100%;">
+      <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
+      <!-- Voiture en overlay -->
+      <img src="images/voiture.PNG" alt="Voiture Mobilize" class="overlay">
       <h1>Vers l'infini et au-delà</h1>
     </div>
 
