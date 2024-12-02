@@ -25,20 +25,21 @@
     header {
       position: relative;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: column; /* Changer la direction pour aligner les logos verticalement */
+      align-items: center; /* Centrer les logos */
       padding: 15px 20px;
       background-color: #000;
     }
 
     .logo-container {
       display: flex;
+      flex-direction: column; /* Pour empiler les logos */
       align-items: center;
     }
 
     .logo-container img {
-      height: 25px;
-      margin-right: 10px; /* Espace entre les logos */
+      height: 30px;
+      margin-bottom: 10px; /* Espace entre les logos */
     }
 
     .menu-icon {
@@ -153,8 +154,8 @@
     <!-- Header Section -->
     <header>
       <div class="logo-container">
-        <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
-        <img src="images/logo_rway.PNG" alt="Logo R-Way">
+        <img src="logo/mobilize.PNG" alt="Logo Mobilize">
+        <img src="logo/rway.PNG" alt="Logo R-Way">
       </div>
       <div class="menu-icon">☰</div>
     </header>
