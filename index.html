@@ -5,99 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
   <style>
-    /* Styles globaux */
+    /* Global Styles */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #000;
       color: #fff;
     }
+
     .container {
-      width: 375px;
+      max-width: 375px; /* Matches the mobile design */
       margin: 0 auto;
       background-color: #121212;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
+      padding: 15px 20px;
       background-color: #000;
     }
+
     .logo {
       font-size: 20px;
       font-weight: bold;
     }
+
     .logo span {
       color: orange;
     }
+
     .menu-icon {
       font-size: 20px;
       cursor: pointer;
     }
+
     .hero {
       position: relative;
       width: 100%;
-      height: 250px; /* Adjust as needed */
+      height: 300px; /* Adjust height based on content */
       overflow: hidden;
     }
+
     .hero img.bg {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Keeps the aspect ratio */
+      object-fit: cover; /* Maintains image aspect ratio */
     }
+
     .hero img.overlay {
       position: absolute;
-      bottom: 10px; /* Distance from the bottom */
-      left: 10px; /* Distance from the left */
-      width: 50%; /* Adjust according to your needs */
-      max-width: 250px; /* Maximum size limit */
+      bottom: 20px; /* Slightly above the edge */
+      left: 20px;
+      width: 30%; /* Adjust size for consistency */
+      max-width: 150px;
     }
+
     .hero h1 {
       position: absolute;
-      bottom: 80px; /* Place the text above the car */
+      bottom: 100px; /* Position above overlay image */
       left: 20px;
-      font-size: 18px;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-radius: 5px;
+      font-size: 20px;
+      color: orange; /* Highlighted text color */
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 15px;
+      border-radius: 10px;
     }
+
     .slow-travel {
       padding: 20px;
       text-align: center;
     }
+
     .slow-travel h2 {
+      font-size: 24px;
       color: orange;
-      margin-bottom: 10px;
-    }
-    .slow-travel p {
-      font-size: 14px;
       margin-bottom: 15px;
     }
+
+    .slow-travel p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      text-align: justify; /* Align text for better readability */
+    }
+
     .slow-travel img {
       width: 100%;
       border-radius: 10px;
-      margin: 15px 0;
+      margin: 20px 0;
     }
+
     .slow-travel button {
-      display: block;
-      margin: 0 auto;
-      padding: 10px 20px;
+      padding: 12px 20px;
       background-color: orange;
       color: #fff;
       border: none;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slow-travel button:hover {
+      background-color: #ff9900; /* Brighter shade on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 16px;
+        padding: 8px 10px;
+      }
+
+      .hero img.overlay {
+        width: 40%;
+      }
+
+      .slow-travel p {
+        font-size: 12px;
+      }
+
+      .slow-travel button {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
       <div class="logo">MOBILIZE <span>R-WAY</span></div>
       <div class="menu-icon">☰</div>
@@ -129,3 +171,4 @@
   </div>
 </body>
 </html>
+
