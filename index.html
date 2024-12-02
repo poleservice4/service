@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Global Styles */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif; /* Typographie moderne */
       background-color: #000;
       color: #fff;
     }
@@ -29,16 +31,6 @@
       align-items: center;
       padding: 15px 20px;
       background-color: #000;
-    }
-
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .logo-container img {
-      margin-bottom: 10px;
     }
 
     .logo-container img:first-child {
@@ -71,26 +63,28 @@
 
     .hero img.car {
       position: absolute;
-      bottom: -20px; /* Ajuste la position pour dépasser légèrement */
+      bottom: -20px;
       left: 0;
-      width: 60%; /* Ajuste la taille de l'image de la voiture */
+      width: 60%;
     }
 
     .hero h1 {
       position: absolute;
-      top: 50%; /* Centré verticalement par rapport à la section hero */
-      left: 50%; /* Centré horizontalement */
-      transform: translate(-50%, -50%); /* Permet un alignement parfait */
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
       font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      text-transform: uppercase;
+      font-weight: 600; /* Semi-bold */
+      text-transform: uppercase; /* Texte en majuscules */
+      letter-spacing: 1px; /* Espacement léger */
       text-align: center;
+      color: #fff;
       z-index: 2;
     }
 
     .hero h1 span {
-      color: #f84300; /* Teinte orange mise à jour */
+      color: #f84300; 
+      font-weight: 700; /* Plus gras pour attirer l'attention */
     }
 
     .content {
@@ -100,17 +94,21 @@
 
     .content h2 {
       font-size: 22px;
+      font-weight: 600; /* Semi-bold */
       color: #fff;
       margin-bottom: 15px;
+      text-transform: uppercase; /* Majuscules pour les titres */
+      letter-spacing: 1px;
     }
 
     .content h2 span {
-      color: #f84300; /* Teinte orange mise à jour */
+      color: #f84300;
     }
 
     .content p {
       font-size: 14px;
-      line-height: 1.5;
+      font-weight: 300; /* Texte léger */
+      line-height: 1.8;
       margin-bottom: 15px;
       text-align: justify;
     }
@@ -123,17 +121,20 @@
 
     .content button {
       padding: 12px 20px;
-      background-color: #f84300; /* Teinte orange mise à jour */
+      background-color: #f84300;
       color: #fff;
       border: none;
       border-radius: 5px;
       font-size: 16px;
+      font-weight: 600; /* Semi-bold pour le bouton */
+      text-transform: uppercase;
+      letter-spacing: 1px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .content button:hover {
-      background-color: #ff5733; /* Teinte légèrement différente pour le hover */
+      background-color: #ff5733;
     }
 
     /* Responsive Design */
@@ -169,11 +170,8 @@
 
     <!-- Hero Section -->
     <div class="hero">
-      <!-- Background image -->
       <img src="images/paysage1.JPG" alt="Paysage 1" class="bg">
-      <!-- Car image positioned on top of the background image -->
       <img src="images/voiture.PNG" alt="Voiture Mobilize" class="car">
-      <!-- Text -->
       <h1>
         Vers l'infini et <br><span>au-delà</span>
       </h1>
@@ -189,7 +187,6 @@
       <p>
         Le slow travel invite à choisir des destinations proches pour réduire l’empreinte carbone, à privilégier des hébergements locaux et à consommer de manière responsable.
       </p>
-      <!-- Secondary image -->
       <img src="images/paysage2.JPG" alt="Paysage 2">
       <button>Voyager</button>
     </div>
