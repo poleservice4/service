@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobilize R-Way</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     /* Global Styles */
     body {
       margin: 0;
-      font-family: 'Inter', 'Roboto', Arial, sans-serif; /* Typographie principale */
+      font-family: Arial, sans-serif;
       background-color: #000;
       color: #fff;
     }
@@ -41,6 +39,14 @@
 
     .logo-container img {
       margin-bottom: 10px;
+    }
+
+    .logo-container img:first-child {
+      height: 15px;
+    }
+
+    .logo-container img:last-child {
+      height: 30px;
     }
 
     .menu-icon {
@@ -75,8 +81,8 @@
       top: 50%; /* Centré verticalement par rapport à la section hero */
       left: 50%; /* Centré horizontalement */
       transform: translate(-50%, -50%); /* Permet un alignement parfait */
-      font-size: 20px;
-      font-weight: 700; /* Gras pour correspondre au style de Mobilize */
+      font-size: 18px;
+      font-weight: bold;
       color: #fff;
       text-transform: uppercase;
       text-align: center;
@@ -84,7 +90,7 @@
     }
 
     .hero h1 span {
-      color: #f84300;
+      color: #f84300; /* Teinte orange mise à jour */
     }
 
     .content {
@@ -94,13 +100,12 @@
 
     .content h2 {
       font-size: 22px;
-      font-weight: 500; /* Semi-gras */
       color: #fff;
       margin-bottom: 15px;
     }
 
     .content h2 span {
-      color: #f84300;
+      color: #f84300; /* Teinte orange mise à jour */
     }
 
     .content p {
@@ -108,23 +113,27 @@
       line-height: 1.5;
       margin-bottom: 15px;
       text-align: justify;
-      font-weight: 400; /* Normal */
+    }
+
+    .content img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
     }
 
     .content button {
       padding: 12px 20px;
-      background-color: #f84300;
+      background-color: #f84300; /* Teinte orange mise à jour */
       color: #fff;
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .content button:hover {
-      background-color: #ff9900;
+      background-color: #ff5733; /* Teinte légèrement différente pour le hover */
     }
 
     /* Responsive Design */
@@ -187,3 +196,4 @@
   </div>
 </body>
 </html>
+
