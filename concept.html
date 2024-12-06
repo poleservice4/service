@@ -31,10 +31,6 @@
         .header {
             background-color: #000;
             padding: 20px;
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            padding: 10px;
             position: relative;
         }
 
@@ -48,9 +44,12 @@
         }
 
         .logo-container img {
-            width: 50px; /* Dimensions du logo ajustées */
+            width: 50px;
             height: auto;
-            text-align: left;
+        }
+
+        .logo-container img.logo-taille2 {
+            transform: translateX(12px) scale(1.5);
         }
 
         .main-section {
@@ -64,7 +63,6 @@
             font-weight: bold;
             margin-bottom: 40px;
             text-align: center;
-            z-index: 12;
         }
 
         .text-content {
@@ -91,30 +89,17 @@
 
         .image-section {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             margin-bottom: 40px;
         }
 
         .image-section img {
             width: 45%;
+            max-width: 400px;
+            margin: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero {
-            position: relative;
-            top: 40px;
-            width: 100%;
-            height: 50vh;
-            max-height: 400px;
-            overflow: hidden;
-        }
-
-        .hero img.bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            padding: 0 10px 0 10px;
         }
     </style>
 </head>
@@ -122,8 +107,8 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <img src="images/logo_mobilize.PNG" alt="Logo 1">
-                <img src="images/logo_rway.PNG" alt="Logo 2">
+                <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
+                <img src="images/logo_rway.PNG" alt="Logo R-Way" class="logo-taille2">
             </div>
         </div>
 
@@ -150,7 +135,6 @@
                 <img src="images/intérieur2.JPG" alt="Intérieur du véhicule">
                 <img src="images/rail_changement.JPG" alt="Transition vers la circulation routière">
             </div>
-
         </div>
     </div>
 </body>
