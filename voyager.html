@@ -203,7 +203,6 @@
         .gamme-item.selected {
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
-
     </style>
 </head>
 <body>
@@ -217,6 +216,39 @@
 
         <div class="title">Organisation du Voyage</div>
 
+        <!-- Section : Sélection de la taille du véhicule -->
+        <div class="section gamme-selection">
+            <h2>Sélection de la taille du véhicule</h2>
+            <div class="gamme-items">
+                <div class="gamme-item" id="gamme-1-4">
+                    <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
+                    <h3>R-Way 1 à 4 Personnes</h3>
+                </div>
+                <div class="gamme-item" id="gamme-4-8">
+                    <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
+                    <h3>R-Way 4 à 8 Personnes</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section : Choix de la gamme -->
+        <div class="section gamme-selection">
+            <h2>Choix de la gamme</h2>
+            <div class="gamme-items">
+                <div class="gamme-item" id="gamme-classique">
+                    <img src="images/interieur1.PNG" alt="Gamme Classique">
+                    <h3>Gamme Classique</h3>
+                    <p>Siège conducteur, assises, prises, table rétractable, espace rangement, tableau de bord</p>
+                </div>
+                <div class="gamme-item" id="gamme-plus">
+                    <img src="images/interieur2.JPG" alt="Gamme +">
+                    <h3>Gamme +</h3>
+                    <p>WiFi, couchage, toilettes, mini-réfrigérateur, literie</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section : Calendrier -->
         <div class="section calendar">
             <div class="calendar-controls">
                 <button id="prev-month">◀</button>
@@ -239,29 +271,27 @@
             </table>
         </div>
 
+        <!-- Section : Horaires -->
         <div class="section horaires" id="horaires-section" style="display: none;">
             <h2>Horaire à sélectionner :</h2>
             <div id="horaires-list"></div>
-        </div>
-
-        <div class="section gamme-selection">
-            <h2>Sélection de la taille du véhicule</h2>
-            <div class="gamme-items">
-                <div class="gamme-item" id="gamme-1-4">
-                    <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
-                    <h3>R-Way 1 à 4 Personnes</h3>
-                </div>
-                <div class="gamme-item" id="gamme-4-8">
-                    <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
-                    <h3>R-Way 4 à 8 Personnes</h3>
-                </div>
-            </div>
         </div>
 
         <div class="button-container">
             <a href="continuer.html">Continuer</a>
         </div>
     </div>
+
+    <script>
+        // Gestion des sélections
+        const gammeItems = document.querySelectorAll('.gamme-item');
+        gammeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                gammeItems.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+            });
+        });
+
 
     <script>
         // Sélection du véhicule
