@@ -63,6 +63,98 @@
             color: #FF6600;
         }
 
+        .calendar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            color: #fff;
+        }
+
+        .calendar table th, .calendar table td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .calendar table td.active {
+            background-color: #FF6600;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .calendar table td:hover {
+            background-color: #333;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calendar-controls button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .horaires button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .horaires button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .horaires button.selected {
+            background-color: #FF6600;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            background-color: #FF6600;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+        }
+
+        .button-container a:hover {
+            background-color: #e05500;
+        }
+
         .gamme-selection {
             margin-top: 40px;
         }
@@ -76,21 +168,19 @@
         .gamme-items {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 20px; /* Espacement entre les éléments */
+            flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
         }
 
         .gamme-item {
             flex: 1;
-            min-width: 250px;
+            min-width: 250px; /* Fixe une largeur minimale pour chaque item */
             background-color: #111;
             border: 1px solid #444;
             padding: 15px;
             text-align: center;
             border-radius: 5px;
             color: #fff;
-            cursor: pointer;
-            transition: border-color 0.3s;
         }
 
         .gamme-item img {
@@ -109,17 +199,6 @@
             color: #ccc;
         }
 
-        .gamme-item.selected {
-            border-color: #FF6600;
-            background-color: #222;
-        }
-
-        .gamme-item .selected-text {
-            display: block;
-            margin-top: 10px;
-            font-size: 16px;
-            color: #FF6600;
-        }
     </style>
 </head>
 <body>
@@ -133,20 +212,43 @@
 
         <div class="title">Organisation du Voyage</div>
 
+        <div class="section calendar">
+            <div class="calendar-controls">
+                <button id="prev-month">◀</button>
+                <select id="month-select"></select>
+                <button id="next-month">▶</button>
+            </div>
+            <table id="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mer</th>
+                        <th>Jeu</th>
+                        <th>Ven</th>
+                        <th>Sam</th>
+                        <th>Dim</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="section horaires" id="horaires-section" style="display: none;">
+            <h2>Horaire à sélectionner :</h2>
+            <div id="horaires-list"></div>
+        </div>
+
         <div class="section gamme-selection">
             <h2>Sélection de la taille du véhicule</h2>
             <div class="gamme-items">
-                <div class="gamme-item" onclick="selectGamme(this)">
+                <div class="gamme-item">
                     <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
                     <h3>R-Way 1 à 4 Personnes</h3>
-                    <p>Capacité : 1 à 4 personnes</p>
-                    <span class="selected-text" style="display: none;">Vous avez sélectionné R-Way 1 à 4 personnes</span>
                 </div>
-                <div class="gamme-item" onclick="selectGamme(this)">
+                <div class="gamme-item">
                     <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
                     <h3>R-Way 4 à 8 Personnes</h3>
-                    <p>Capacité : 4 à 8 personnes</p>
-                    <span class="selected-text" style="display: none;">Vous avez sélectionné R-Way 4 à 8 personnes</span>
                 </div>
             </div>
         </div>
@@ -157,17 +259,125 @@
     </div>
 
     <script>
-        function selectGamme(element) {
-            // Retirer la sélection d'autres éléments
-            document.querySelectorAll(".gamme-item").forEach(item => {
-                item.classList.remove("selected");
-                item.querySelector(".selected-text").style.display = "none"; // Masquer le texte
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const monthSelect = document.getElementById("month-select");
+        const calendarTable = document.getElementById("calendar-table").querySelector("tbody");
+        const horairesSection = document.getElementById("horaires-section");
+        const horairesList = document.getElementById("horaires-list");
+
+        function populateMonthSelect() {
+            monthSelect.innerHTML = "";
+            for (let i = 0; i < monthNames.length; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = ${monthNames[i]} ${currentYear};
+                if (i === currentMonth) option.selected = true;
+                monthSelect.appendChild(option);
+            }
+        }
+
+        function generateCalendar(month, year) {
+            calendarTable.innerHTML = "";
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            const rows = Math.ceil((daysInMonth + firstDay) / 7);
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement("td");
+
+                    if ((i === 0 && j < (firstDay === 0 ? 6 : firstDay - 1)) || day > daysInMonth) {
+                        cell.textContent = "";
+                    } else {
+                        cell.textContent = day;
+                        cell.addEventListener("click", () => {
+                            document.querySelectorAll("td.active").forEach(td => td.classList.remove("active"));
+                            cell.classList.add("active");
+                            generateHoraires(day, month, year);  // Génère des horaires pour le jour sélectionné
+                        });
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendarTable.appendChild(row);
+            }
+        }
+
+        function generateHoraires(day, month, year) {
+            horairesSection.style.display = 'block';
+            horairesList.innerHTML = '';
+
+            // Horaires fixes : pile, quart, demi, moins le quart
+            const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]; // De 8h à 18h
+            const times = ["00", "15", "30", "45"]; // Les minutes possibles
+
+            // Générer des horaires aléatoires pour ce jour
+            let horairesDispo = [];
+            while (horairesDispo.length < 6) { // Limiter à 6 horaires différents par jour
+                const randomHour = hours[Math.floor(Math.random() * hours.length)];
+                const randomMinute = times[Math.floor(Math.random() * times.length)];
+                const time = ${randomHour}:${randomMinute};
+
+                // S'assurer que l'heure n'est pas déjà ajoutée
+                if (!horairesDispo.includes(time)) {
+                    horairesDispo.push(time);
+                }
+            }
+
+            // Trier les horaires dans l'ordre croissant
+            horairesDispo.sort((a, b) => {
+                const [aHour, aMinute] = a.split(':').map(Number);
+                const [bHour, bMinute] = b.split(':').map(Number);
+                return aHour - bHour || aMinute - bMinute;
             });
 
-            // Ajouter la sélection à l'élément cliqué
-            element.classList.add("selected");
-            element.querySelector(".selected-text").style.display = "block"; // Afficher le texte
+            // Ajouter les horaires à la page
+            horairesDispo.forEach(time => {
+                const button = document.createElement("button");
+                button.textContent = time;
+                button.addEventListener("click", () => {
+                    // Désélectionner l'heure précédemment sélectionnée
+                    document.querySelectorAll(".horaires button.selected").forEach(btn => btn.classList.remove("selected"));
+
+                    // Ajouter la classe 'selected' à l'heure cliquée
+                    button.classList.add("selected");
+                });
+                horairesList.appendChild(button);
+            });
         }
+
+        document.getElementById("prev-month").addEventListener("click", () => {
+            currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
+        });
+
+        document.getElementById("next-month").addEventListener("click", () => {
+            currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
+        });
+
+        monthSelect.addEventListener("change", (event) => {
+            currentMonth = parseInt(event.target.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        // Initialiser le mois actuel
+        populateMonthSelect();
+        generateCalendar(currentMonth, currentYear);
     </script>
 </body>
 </html>
