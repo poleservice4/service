@@ -293,13 +293,24 @@
             const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]; // De 8h à 18h
             const times = ["00", "15", "30", "45"]; // Les minutes possibles
 
-            hours.forEach(hour => {
-                times.forEach(minute => {
-                    const time = `${hour}:${minute}`;
-                    const button = document.createElement("button");
-                    button.textContent = time;
-                    horairesList.appendChild(button);
-                });
+            // Générer des horaires aléatoires pour ce jour
+            let horairesDispo = [];
+            while (horairesDispo.length < 6) { // Limiter à 6 horaires différents par jour
+                const randomHour = hours[Math.floor(Math.random() * hours.length)];
+                const randomMinute = times[Math.floor(Math.random() * times.length)];
+                const time = `${randomHour}:${randomMinute}`;
+
+                // S'assurer que l'heure n'est pas déjà ajoutée
+                if (!horairesDispo.includes(time)) {
+                    horairesDispo.push(time);
+                }
+            }
+
+            // Ajouter les horaires à la page
+            horairesDispo.forEach(time => {
+                const button = document.createElement("button");
+                button.textContent = time;
+                horairesList.appendChild(button);
             });
         }
 
