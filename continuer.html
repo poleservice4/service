@@ -70,6 +70,12 @@
             width: 100%;
             border-radius: 10px;
             margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s; /* Animation de transition pour agrandissement */
+        }
+
+        .map-section img:hover {
+            transform: scale(1.05); /* Agrandissement au survol */
         }
 
         .stops-list {
@@ -152,7 +158,7 @@
 
             <!-- Carte avec itinéraire -->
             <div class="map-section">
-                <img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle">
+                <a href="selection.html"><img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle"></a>
             </div>
 
             <!-- Liste des arrêts -->
@@ -175,6 +181,7 @@
     </div>
 </body>
 </html>
+
 
 
 
