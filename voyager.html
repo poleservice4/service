@@ -121,11 +121,18 @@
             border: 2px solid #FF6600;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .horaires button:hover {
             background-color: #FF6600;
             color: #000;
+        }
+
+        .horaires button.selected {
+            background-color: #FF6600;
+            color: #000;
+            font-weight: bold;
         }
 
         .button-container {
@@ -310,6 +317,13 @@
             horairesDispo.forEach(time => {
                 const button = document.createElement("button");
                 button.textContent = time;
+                button.addEventListener("click", () => {
+                    // Désélectionner l'heure précédemment sélectionnée
+                    document.querySelectorAll(".horaires button.selected").forEach(btn => btn.classList.remove("selected"));
+
+                    // Ajouter la classe 'selected' à l'heure cliquée
+                    button.classList.add("selected");
+                });
                 horairesList.appendChild(button);
             });
         }
