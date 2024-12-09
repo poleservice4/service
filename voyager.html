@@ -181,7 +181,7 @@
             text-align: center;
             border-radius: 5px;
             color: #fff;
-            cursor: pointer;
+            transition: border 0.3s;
         }
 
         .gamme-item img {
@@ -200,11 +200,8 @@
             color: #ccc;
         }
 
-        .selected-gamme {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #FF6600;
+        .gamme-item.selected {
+            border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
 
     </style>
@@ -250,16 +247,15 @@
         <div class="section gamme-selection">
             <h2>Sélection de la taille du véhicule</h2>
             <div class="gamme-items">
-                <div class="gamme-item" onclick="selectGamme('R-Way 1 à 4 Personnes')">
+                <div class="gamme-item" id="gamme-1-4">
                     <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
                     <h3>R-Way 1 à 4 Personnes</h3>
                 </div>
-                <div class="gamme-item" onclick="selectGamme('R-Way 4 à 8 Personnes')">
+                <div class="gamme-item" id="gamme-4-8">
                     <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
                     <h3>R-Way 4 à 8 Personnes</h3>
                 </div>
             </div>
-            <div class="selected-gamme" id="selected-gamme"></div>
         </div>
 
         <div class="button-container">
@@ -268,6 +264,17 @@
     </div>
 
     <script>
+        // Sélection du véhicule
+        const gammeItems = document.querySelectorAll('.gamme-item');
+        gammeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Retirer la sélection des autres éléments
+                gammeItems.forEach(i => i.classList.remove('selected'));
+                // Ajouter un cadre orange autour de l'élément sélectionné
+                item.classList.add('selected');
+            });
+        });
+
         const monthNames = [
             "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
@@ -365,10 +372,6 @@
                 });
                 horairesList.appendChild(button);
             });
-        }
-
-        function selectGamme(gamme) {
-            document.getElementById("selected-gamme").textContent = `Vous avez sélectionné : ${gamme}`;
         }
 
         document.getElementById("prev-month").addEventListener("click", () => {
