@@ -17,38 +17,7 @@
             color: #fff;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px; /* Ajusté pour correspondre à index.html */
-            background-color: #000; /* Fond noir */
-        }
-
-        .header img {
-            height: 50px; /* Ajusté à la hauteur des logos de index.html */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background-color: #000;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        h1, h2 {
-            text-align: center;
-            color: #FF6600;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .calendar, .horaires, .gamme-selection {
+        .calendar {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -63,6 +32,7 @@
             padding: 10px;
             border: 1px solid #444;
             text-align: center;
+            cursor: pointer;
         }
 
         .calendar table td.active {
@@ -71,77 +41,48 @@
             font-weight: bold;
         }
 
-        .horaires button {
+        .calendar table td:hover {
+            background-color: #333;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
             background-color: #111;
             color: #fff;
             padding: 10px 20px;
-            margin: 5px;
+            margin: 0 10px;
             border: 2px solid #FF6600;
             font-size: 16px;
             cursor: pointer;
         }
 
-        .horaires button:hover {
+        .calendar-controls button:hover {
             background-color: #FF6600;
             color: #000;
         }
 
-        .gamme-selection {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .gamme-item {
-            width: 48%;
-            background-color: #111;
-            border: 1px solid #444;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            color: #fff;
-        }
-
-        .gamme-item img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button-container a {
-            background-color: #FF6600;
-            color: #fff;
-            padding: 15px 30px;
+        .calendar-controls select {
+            padding: 10px;
             font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: none;
-        }
-
-        .button-container a:hover {
-            background-color: #e05500;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <!-- En-tête avec les logos -->
-    <div class="header">
-        <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
-        <img src="images/logo_rway.PNG" alt="Logo R-Way">
-    </div>
-
-    <div class="container">
-        <h1>Organisation du Voyage</h1>
-
-        <div class="section calendar">
-            <h2>Départ : Juin 2025</h2>
-            <table>
+    <div class="calendar">
+        <div class="calendar-controls">
+            <button id="prev-month">◀</button>
+            <select id="month-select"></select>
+            <button id="next-month">▶</button>
+        </div>
+        <table id="calendar-table">
+            <thead>
                 <tr>
                     <th>Lun</th>
                     <th>Mar</th>
@@ -151,57 +92,95 @@
                     <th>Sam</th>
                     <th>Dim</th>
                 </tr>
-                <tr>
-                    <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
-                </tr>
-                <tr>
-                    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
-                </tr>
-                <tr>
-                    <td>12</td><td>13</td><td class="active">14</td><td>15</td><td>16</td><td>17</td><td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
-                </tr>
-                <tr>
-                    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="section horaires">
-            <h2>Horaire à sélectionner :</h2>
-            <button>10h30</button>
-            <button>10h45</button>
-            <button>11h</button>
-            <button>11h40</button>
-            <button>12h</button>
-            <button>12h35</button>
-            <button>13h10</button>
-            <button>13h35</button>
-            <button>13h50</button>
-            <button>14h15</button>
-            <button>14h30</button>
-            <button>15h</button>
-        </div>
-
-        <div class="section gamme-selection">
-            <h2>Sélection de la Gamme</h2>
-            <div class="gamme-item">
-                <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
-                <h3>R-Way 1 à 4 Personnes</h3>
-                <p>Sièges conducteur, Prises de recharge, Bluetooth, Tableau de bord, Espaces rangements</p>
-            </div>
-            <div class="gamme-item">
-                <img src="images/voiture_route.PNG" alt="R-Way 4 à 8 Personnes">
-                <h3>R-Way 4 à 8 Personnes</h3>
-                <p>Sièges conducteur, Table rétractable, Prises de recharge, Bluetooth, Espaces rangements</p>
-            </div>
-        </div>
-
-        <div class="button-container">
-            <a href="continuer.html">Continuer</a>
-        </div>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
+
+    <script>
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const monthSelect = document.getElementById("month-select");
+        const calendarTable = document.getElementById("calendar-table").querySelector("tbody");
+
+        function populateMonthSelect() {
+            monthSelect.innerHTML = "";
+            for (let i = 0; i < monthNames.length; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = `${monthNames[i]} ${currentYear}`;
+                if (i === currentMonth) option.selected = true;
+                monthSelect.appendChild(option);
+            }
+        }
+
+        function generateCalendar(month, year) {
+            calendarTable.innerHTML = "";
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            const rows = Math.ceil((daysInMonth + firstDay) / 7);
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement("td");
+
+                    if ((i === 0 && j < (firstDay === 0 ? 6 : firstDay - 1)) || day > daysInMonth) {
+                        cell.textContent = "";
+                    } else {
+                        cell.textContent = day;
+                        cell.addEventListener("click", () => {
+                            document.querySelectorAll("td.active").forEach(td => td.classList.remove("active"));
+                            cell.classList.add("active");
+                            console.log(`Jour sélectionné : ${day} ${monthNames[month]} ${year}`);
+                        });
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendarTable.appendChild(row);
+            }
+        }
+
+        function updateCalendar() {
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
+        }
+
+        document.getElementById("prev-month").addEventListener("click", () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            updateCalendar();
+        });
+
+        document.getElementById("next-month").addEventListener("click", () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendar();
+        });
+
+        monthSelect.addEventListener("change", () => {
+            currentMonth = parseInt(monthSelect.value);
+            updateCalendar();
+        });
+
+        updateCalendar();
+    </script>
 </body>
 </html>
