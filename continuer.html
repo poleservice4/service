@@ -102,6 +102,14 @@
             color: #FF6600;
             font-size: 18px;
         }
+
+        /* Mise en forme pour les villes spécifiques en orange */
+        .stops-list ul li.Paris,
+        .stops-list ul li.Chartres,
+        .stops-list ul li.Niort,
+        .stops-list ul li.LaRochelle {
+            color: #FF6600;
+        }
     </style>
 </head>
 <body>
@@ -127,13 +135,13 @@
             <div class="stops-list">
                 <h2>Choisissez vos Arrêts</h2>
                 <ul>
-                    <li>Paris</li>
-                    <li>Chartres</li>
+                    <li class="Paris">Paris</li>
+                    <li class="Chartres">Chartres</li>
                     <li>Orléans</li>
                     <li>Tours</li>
                     <li>Poitiers</li>
-                    <li>Niort</li>
-                    <li>La Rochelle</li>
+                    <li class="Niort">Niort</li>
+                    <li class="LaRochelle">La Rochelle</li>
                     <li>Le Mans</li>
                     <li>Angers</li>
                 </ul>
@@ -142,4 +150,5 @@
     </div>
 </body>
 </html>
+
 
