@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -294,7 +294,7 @@
             for (let i = 0; i < monthNames.length; i++) {
                 const option = document.createElement("option");
                 option.value = i;
-                option.textContent = ${monthNames[i]} ${currentYear};
+                option.textContent = `${monthNames[i]} ${currentYear}`;
                 if (i === currentMonth) option.selected = true;
                 monthSelect.appendChild(option);
             }
@@ -344,7 +344,7 @@
             while (horairesDispo.length < 6) { // Limiter à 6 horaires différents par jour
                 const randomHour = hours[Math.floor(Math.random() * hours.length)];
                 const randomMinute = times[Math.floor(Math.random() * times.length)];
-                const time = ${randomHour}:${randomMinute};
+                const time = `${randomHour}:${randomMinute}`;
 
                 // S'assurer que l'heure n'est pas déjà ajoutée
                 if (!horairesDispo.includes(time)) {
