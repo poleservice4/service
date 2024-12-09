@@ -158,12 +158,14 @@
         .gamme-selection {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 40px; /* Ajout de l'espacement entre la section horaires et la sélection de gamme */
+            gap: 20px; /* Espacement entre les éléments */
+            flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+            margin-top: 40px;
         }
 
         .gamme-item {
-            width: 48%;
+            flex: 1;
+            min-width: 250px; /* Fixe une largeur minimale pour chaque item */
             background-color: #111;
             border: 1px solid #444;
             padding: 15px;
@@ -177,6 +179,17 @@
             border-radius: 5px;
             margin-bottom: 10px;
         }
+
+        .gamme-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .gamme-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
     </style>
 </head>
 <body>
