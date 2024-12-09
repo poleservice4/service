@@ -38,47 +38,136 @@
             position: relative;
         }
 
-        .header span.highlight {
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .logo-text {
+            color: white;
+        }
+
+        .logo-highlight {
             color: #FF6600;
         }
 
-        .map-section {
-            position: relative;
-            overflow: hidden;
+        .logo-taille2 {
+            transform: translateX(12px) scale(1.5);
         }
 
-        .map-section img {
-            width: 100%;
+        .logo-container {
+            display: flex;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-container img {
+            width: 50px;
             height: auto;
+            text-align: left;
+        }
+
+        .image-section {
+            position: relative;
+        }
+
+        .image-section img {
+            width: 100%;
             display: block;
         }
 
-        .stops-list {
+        .image-section .overlay {
+            position: absolute;
+            bottom: -116px;
+            left: -5%;
+            height: 250px;
+            width: 350px;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .main-section {
             padding: 20px;
-            text-align: center;
             background-color: #000;
+            color: #fff;
         }
 
-        .stops-list h2 {
+        .title {
             font-size: 18px;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            top: 28px;
+            text-align: center;
+            width: 40%;
+            position: relative;
+            right: 0px;
+            margin-left: auto;
+            z-index: 12;
+        }
+
+        .button {
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 10px 20px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .learn-more {
+            margin-bottom: 40px;
+        }
+
+        .slow-travel {
+            text-align: left;
+            margin: 20px;
+        }
+
+        .slow-travel h2 {
+            font-size: 20px;
+        }
+
+        .slow-travel p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .highlight {
             color: #FF6600;
         }
 
-        .stops-list ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-
-        .stops-list ul li {
+        .voyager {
+            background-color: #FF6600;
+            color: white; /* Texte blanc */
+            padding: 10px 30px;
             font-size: 16px;
-            line-height: 2;
+            text-transform: uppercase;
+            text-decoration: none; /* Supprime le soulignement */
+            display: inline-block;
         }
 
-        .stops-list ul li::before {
-            content: "• ";
-            color: #FF6600;
+        .hero {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 50vh;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        .hero img.bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            padding: 0 10px 0 10px;
         }
      </style>
 </head>
