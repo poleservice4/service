@@ -17,6 +17,18 @@
             color: #fff;
         }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000; /* Fond noir */
+        }
+
+        .header img {
+            height: 40px; /* Hauteur des logos comme sur index.html */
+        }
+
         .container {
             max-width: 1200px;
             margin: auto;
@@ -24,17 +36,6 @@
             background-color: #000;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .logos {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .logos img {
-            height: 50px;
         }
 
         h1, h2 {
@@ -129,8 +130,8 @@
     </style>
 </head>
 <body>
-    <!-- Ajout des logos -->
-    <div class="logos">
+    <!-- En-tête avec les logos -->
+    <div class="header">
         <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
         <img src="images/logo_rway.PNG" alt="Logo R-Way">
     </div>
