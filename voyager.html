@@ -159,6 +159,7 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin-top: 40px; /* Ajout de l'espacement entre la section horaires et la sélection de gamme */
         }
 
         .gamme-item {
@@ -335,35 +336,26 @@
             });
         }
 
-        function updateCalendar() {
+        document.getElementById("prev-month").addEventListener("click", () => {
+            currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
             generateCalendar(currentMonth, currentYear);
             populateMonthSelect();
-        }
-
-        document.getElementById("prev-month").addEventListener("click", () => {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            updateCalendar();
         });
 
         document.getElementById("next-month").addEventListener("click", () => {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            updateCalendar();
+            currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
         });
 
-        document.getElementById("month-select").addEventListener("change", (event) => {
+        monthSelect.addEventListener("change", (event) => {
             currentMonth = parseInt(event.target.value);
-            updateCalendar();
+            generateCalendar(currentMonth, currentYear);
         });
 
-        updateCalendar(); // Initialisation du calendrier
+        // Initialiser le mois actuel
+        populateMonthSelect();
+        generateCalendar(currentMonth, currentYear);
     </script>
 </body>
 </html>
