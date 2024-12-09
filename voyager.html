@@ -21,12 +21,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            background-color: #000;
+            padding: 15px 30px; /* Ajusté pour correspondre à index.html */
+            background-color: #000; /* Fond noir */
         }
 
         .header img {
-            height: 50px;
+            height: 50px; /* Ajusté à la hauteur des logos de index.html */
         }
 
         .container {
@@ -48,7 +48,7 @@
             margin-bottom: 30px;
         }
 
-        .calendar, .horaires, .gamme-selection {
+        .calendar {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -63,12 +63,45 @@
             padding: 10px;
             border: 1px solid #444;
             text-align: center;
+            cursor: pointer;
         }
 
         .calendar table td.active {
             background-color: #FF6600;
             color: #fff;
             font-weight: bold;
+        }
+
+        .calendar table td:hover {
+            background-color: #333;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calendar-controls button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .calendar-controls select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 0 10px;
         }
 
         .horaires button {
@@ -140,39 +173,30 @@
         <h1>Organisation du Voyage</h1>
 
         <div class="section calendar">
-            <h2>Départ : Juin 2025</h2>
-            <p id="selectedDate">Mois et jour sélectionnés : </p>
-            <table>
-                <tr>
-                    <th>Lun</th>
-                    <th>Mar</th>
-                    <th>Mer</th>
-                    <th>Jeu</th>
-                    <th>Ven</th>
-                    <th>Sam</th>
-                    <th>Dim</th>
-                </tr>
-                <tr>
-                    <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
-                </tr>
-                <tr>
-                    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
-                </tr>
-                <tr>
-                    <td>12</td><td>13</td><td class="active" onclick="selectDate(14, 'Juin')">14</td><td>15</td><td>16</td><td>17</td><td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
-                </tr>
-                <tr>
-                    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td>
-                </tr>
+            <div class="calendar-controls">
+                <button id="prev-month">◀</button>
+                <select id="month-select"></select>
+                <button id="next-month">▶</button>
+            </div>
+            <table id="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mer</th>
+                        <th>Jeu</th>
+                        <th>Ven</th>
+                        <th>Sam</th>
+                        <th>Dim</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
             </table>
         </div>
 
-        <div class="section horaires" style="display:none;">
+        <div class="section horaires" id="horaires-section" style="display: none;">
             <h2>Horaire à sélectionner :</h2>
-            <div id="horairesList"></div>
+            <div id="horaires-list"></div>
         </div>
 
         <div class="section gamme-selection">
@@ -195,35 +219,135 @@
     </div>
 
     <script>
-        // Liste des mois pour affichage
-        const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
 
-        // Fonction pour afficher les horaires aléatoires
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const monthSelect = document.getElementById("month-select");
+        const calendarTable = document.getElementById("calendar-table").querySelector("tbody");
+        const horairesSection = document.getElementById("horaires-section");
+        const horairesList = document.getElementById("horaires-list");
+
+        function populateMonthSelect() {
+            monthSelect.innerHTML = "";
+            for (let i = 0; i < monthNames.length; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = `${monthNames[i]} ${currentYear}`;
+                if (i === currentMonth) option.selected = true;
+                monthSelect.appendChild(option);
+            }
+        }
+
+        function generateCalendar(month, year) {
+            calendarTable.innerHTML = "";
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            const rows = Math.ceil((daysInMonth + firstDay) / 7);
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement("td");
+
+                    if ((i === 0 && j < (firstDay === 0 ? 6 : firstDay - 1)) || day > daysInMonth) {
+                        cell.textContent = "";
+                    } else {
+                        cell.textContent = day;
+                        cell.addEventListener("click", () => {
+                            document.querySelectorAll("td.active").forEach(td => td.classList.remove("active"));
+                            cell.classList.add("active");
+                            generateHoraires(day, month, year);  // Génère des horaires pour le jour sélectionné
+                        });
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendarTable.appendChild(row);
+            }
+        }
+
         function generateHoraires(day, month, year) {
-            const horairesSection = document.querySelector('.horaires');
-            const horairesList = document.getElementById('horairesList');
             horairesSection.style.display = 'block';
             horairesList.innerHTML = '';
 
+            // Génère des horaires aléatoires entre 8h00 et 18h00
             const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
-            const minutesPossibles = [0, 15, 30, 45];
 
             for (let i = 0; i < numHoraires; i++) {
-                let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8h et 18h
-                let minute = minutesPossibles[Math.floor(Math.random() * minutesPossibles.length)];
-                const time = `${hour}:${minute < 10 ? '0' + minute : minute}`;
+                let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
+                let minute = Math.floor(Math.random() * 60);  // Entre 0 et 59 minutes
+                if (minute < 10) minute = '0' + minute;  // Ajoute un 0 devant les minutes si nécessaire
+
+                const time = `${hour}:${minute}`;
                 const button = document.createElement("button");
                 button.textContent = time;
                 horairesList.appendChild(button);
             }
         }
 
-        // Fonction pour mettre à jour la date sélectionnée et afficher les horaires
-        function selectDate(day, month) {
-            const selectedDate = document.getElementById("selectedDate");
-            selectedDate.textContent = `Mois sélectionné : ${month} - Jour sélectionné : ${day}`;
-            generateHoraires(day, month, 2025);  // Exemple avec l'année 2025
+        function updateCalendar() {
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
         }
-    </script>
+
+        document.getElementById("prev-month").addEventListener("click", () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            updateCalendar();
+        });
+
+        document.getElementById("next-month").addEventListener("click", () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendar();
+        });
+
+        monthSelect.addEventListener("change", () => {
+            currentMonth = parseInt(monthSelect.value);
+            updateCalendar();
+        });
+
+        updateCalendar();
+        
+<script>
+    // Fonction pour générer des horaires aléatoires aux heures "piles"
+    function generateHoraires(day, month, year) {
+        horairesSection.style.display = 'block';
+        horairesList.innerHTML = '';
+
+        // Génère des horaires aléatoires entre 8h00 et 18h00
+        const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
+
+        // Les minutes possibles pour les horaires "piles"
+        const minutesPossibles = [0, 15, 30, 45];
+
+        for (let i = 0; i < numHoraires; i++) {
+            let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
+            let minute = minutesPossibles[Math.floor(Math.random() * minutesPossibles.length)];  // Sélectionne aléatoirement parmi 00, 15, 30, 45
+
+            const time = `${hour}:${minute < 10 ? '0' + minute : minute}`;  // Format avec deux chiffres pour les minutes
+            const button = document.createElement("button");
+            button.textContent = time;
+            horairesList.appendChild(button);
+        }
+    }
+</script>
+
 </body>
 </html>
+
