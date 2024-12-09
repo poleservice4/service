@@ -5,18 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organisation du Voyage</title>
     <style>
-        /* ... (ton style existant ici) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #121212;
+            border-radius: 20px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .header {
+            background-color: #000;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 10px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-container img {
+            width: 50px;
+            height: auto;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            text-align: center;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            color: #FF6600;
+        }
+
+        .calendar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            color: #fff;
+        }
+
+        .calendar table th, .calendar table td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .calendar table td.active {
+            background-color: #FF6600;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .calendar table td:hover {
+            background-color: #333;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calendar-controls button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .horaires button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .horaires button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            background-color: #FF6600;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+        }
+
+        .button-container a:hover {
+            background-color: #e05500;
+        }
+
+        .gamme-selection {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gamme-item {
+            width: 48%;
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .gamme-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <!-- En-tête avec les logos -->
-    <div class="header">
-        <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
-        <img src="images/logo_rway.PNG" alt="Logo R-Way">
-    </div>
-
     <div class="container">
-        <h1>Organisation du Voyage</h1>
+        <div class="header">
+            <div class="logo-container">
+                <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
+                <img src="images/logo_rway.PNG" alt="Logo R-Way">
+            </div>
+        </div>
+
+        <div class="title">Organisation du Voyage</div>
 
         <div class="section calendar">
             <div class="calendar-controls">
@@ -128,14 +292,12 @@
             // Génère des horaires aléatoires entre 8h00 et 18h00
             const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
 
-            // Les minutes possibles pour les horaires "piles"
-            const minutesPossibles = [0, 15, 30, 45];
-
             for (let i = 0; i < numHoraires; i++) {
                 let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
-                let minute = minutesPossibles[Math.floor(Math.random() * minutesPossibles.length)];  // Sélectionne aléatoirement parmi 00, 15, 30, 45
+                let minute = Math.floor(Math.random() * 60);  // Entre 0 et 59 minutes
+                if (minute < 10) minute = '0' + minute;  // Ajoute un 0 devant les minutes si nécessaire
 
-                const time = `${hour}:${minute < 10 ? '0' + minute : minute}`;  // Format avec deux chiffres pour les minutes
+                const time = `${hour}:${minute}`;
                 const button = document.createElement("button");
                 button.textContent = time;
                 horairesList.appendChild(button);
@@ -174,5 +336,3 @@
     </script>
 </body>
 </html>
-
-
