@@ -289,19 +289,18 @@
             horairesSection.style.display = 'block';
             horairesList.innerHTML = '';
 
-            // Génère des horaires aléatoires entre 8h00 et 18h00
-            const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
+            // Horaires fixes : pile, quart, demi, moins le quart
+            const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]; // De 8h à 18h
+            const times = ["00", "15", "30", "45"]; // Les minutes possibles
 
-            for (let i = 0; i < numHoraires; i++) {
-                let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
-                let minute = Math.floor(Math.random() * 60);  // Entre 0 et 59 minutes
-                if (minute < 10) minute = '0' + minute;  // Ajoute un 0 devant les minutes si nécessaire
-
-                const time = `${hour}:${minute}`;
-                const button = document.createElement("button");
-                button.textContent = time;
-                horairesList.appendChild(button);
-            }
+            hours.forEach(hour => {
+                times.forEach(minute => {
+                    const time = `${hour}:${minute}`;
+                    const button = document.createElement("button");
+                    button.textContent = time;
+                    horairesList.appendChild(button);
+                });
+            });
         }
 
         function updateCalendar() {
