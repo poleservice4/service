@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobilize R-Way</title>
+    <title>Mobilize R-Way - Choix des Arrêts</title>
     <style>
+        /* --- Reset et structure de base --- */
         * {
             margin: 0;
             padding: 0;
@@ -24,184 +25,122 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
         }
 
+        /* --- Header --- */
         .header {
             background-color: #000;
             padding: 20px;
             display: flex;
             align-items: flex-start;
             flex-direction: column;
-            padding: 10px;
             position: relative;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        .logo-text {
-            color: white;
-        }
-
-        .logo-highlight {
-            color: #FF6600;
-        }
-
-        .logo-taille2 {
-            transform: translateX(12px) scale(1.5);
         }
 
         .logo-container {
             display: flex;
-            position: absolute;
-            left: 10px;
-            top: 20px;
             flex-direction: column;
-            gap: 2px;
+            gap: 10px;
         }
 
         .logo-container img {
             width: 50px;
             height: auto;
-            text-align: left;
         }
 
-        .image-section {
-            position: relative;
-        }
-
-        .image-section img {
-            width: 100%;
-            display: block;
-        }
-
-        .image-section .overlay {
-            position: absolute;
-            bottom: -116px;
-            left: -5%;
-            height: 250px;
-            width: 350px;
-            transform: scale(1);
-            z-index: 2;
-        }
-
+        /* --- Section principale --- */
         .main-section {
-            padding: 20px;
-            background-color: #000;
-            color: #fff;
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 60px;
-            top: 28px;
             text-align: center;
-            width: 40%;
-            position: relative;
-            right: 0px;
-            margin-left: auto;
-            z-index: 12;
         }
 
-        .button {
-            margin: 20px auto;
-            font-size: 18px;
-            padding: 10px 20px;
-            color: white;
+        h1 {
+            font-size: 24px;
+            color: #FF6600; /* Texte orange */
+            margin-bottom: 20px;
             text-transform: uppercase;
-            font-weight: bold;
-            display: inline-block;
-            cursor: pointer;
-            text-decoration: none;
         }
 
-        .learn-more {
-            margin-bottom: 40px;
+        .map-section img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .slow-travel {
+        .stops-list {
             text-align: left;
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 600px;
         }
 
-        .slow-travel h2 {
+        .stops-list h2 {
             font-size: 20px;
+            color: #FF6600; /* Titre orange */
+            text-align: center;
+            margin-bottom: 15px;
         }
 
-        .slow-travel p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 10px 0;
+        .stops-list ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .highlight {
-            color: #FF6600;
-        }
-
-        .voyager {
-            background-color: #FF6600;
-            color: white; /* Texte blanc */
-            padding: 10px 30px;
+        .stops-list ul li {
             font-size: 16px;
-            text-transform: uppercase;
-            text-decoration: none; /* Supprime le soulignement */
-            display: inline-block;
-        }
-
-        .hero {
+            line-height: 1.8;
             position: relative;
-            top: 40px;
-            width: 100%;
-            height: 50vh;
-            max-height: 400px;
-            overflow: hidden;
+            padding-left: 25px; /* Pour laisser la place au point orange */
+            margin-bottom: 5px;
         }
 
-        .hero img.bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            padding: 0 10px 0 10px;
+        .stops-list ul li::before {
+            content: "•"; /* Point orange */
+            color: #FF6600;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 18px;
         }
-     </style>
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Logo et Header -->
         <div class="header">
             <div class="logo-container">
-                <img src="images/logo_mobilize.PNG" alt="Logo 1">
-                <img src="images/logo_rway.PNG" alt="Logo 2" class="logo-taille2">
+                <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
+                <img src="images/logo_rway.PNG" alt="Logo R-Way">
             </div>
         </div>
 
-    <div class="container">
-        <h1>Choix des arrêts</h1>
+        <!-- Section principale -->
+        <div class="main-section">
+            <h1>Choix des Arrêts</h1>
 
-        <div class="map-section">
-            <!-- Image de la carte avec itinéraire -->
-            <img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle">
-        </div>
+            <!-- Carte avec itinéraire -->
+            <div class="map-section">
+                <img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle">
+            </div>
 
-        <div class="stops-list">
-            <h2>Choisissez vos Arrêts</h2>
-            <ul>
-                <li>Paris</li>
-                <li>Chartres</li>
-                <li>Orléans</li>
-                <li>Tours</li>
-                <li>Poitiers</li>
-                <li>Niort</li>
-                <li>La Rochelle</li>
-                <li>Le Mans</li>
-                <li>Angers</li>
-            </ul>
+            <!-- Liste des arrêts -->
+            <div class="stops-list">
+                <h2>Choisissez vos Arrêts</h2>
+                <ul>
+                    <li>Paris</li>
+                    <li>Chartres</li>
+                    <li>Orléans</li>
+                    <li>Tours</li>
+                    <li>Poitiers</li>
+                    <li>Niort</li>
+                    <li>La Rochelle</li>
+                    <li>Le Mans</li>
+                    <li>Angers</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
 
 
