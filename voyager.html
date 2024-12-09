@@ -5,161 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organisation du Voyage</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px; /* Ajusté pour correspondre à index.html */
-            background-color: #000; /* Fond noir */
-        }
-
-        .header img {
-            height: 50px; /* Ajusté à la hauteur des logos de index.html */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background-color: #000;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        h1, h2 {
-            text-align: center;
-            color: #FF6600;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .calendar {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .calendar table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            color: #fff;
-        }
-
-        .calendar table th, .calendar table td {
-            padding: 10px;
-            border: 1px solid #444;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .calendar table td.active {
-            background-color: #FF6600;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .calendar table td:hover {
-            background-color: #333;
-        }
-
-        .calendar-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .calendar-controls button {
-            background-color: #111;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: 2px solid #FF6600;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .calendar-controls button:hover {
-            background-color: #FF6600;
-            color: #000;
-        }
-
-        .calendar-controls select {
-            padding: 10px;
-            font-size: 16px;
-            margin: 0 10px;
-        }
-
-        .horaires button {
-            background-color: #111;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
-            border: 2px solid #FF6600;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .horaires button:hover {
-            background-color: #FF6600;
-            color: #000;
-        }
-
-        .gamme-selection {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .gamme-item {
-            width: 48%;
-            background-color: #111;
-            border: 1px solid #444;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            color: #fff;
-        }
-
-        .gamme-item img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button-container a {
-            background-color: #FF6600;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: none;
-        }
-
-        .button-container a:hover {
-            background-color: #e05500;
-        }
+        /* ... (ton style existant ici) ... */
     </style>
 </head>
 <body>
@@ -282,12 +128,14 @@
             // Génère des horaires aléatoires entre 8h00 et 18h00
             const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
 
+            // Les minutes possibles pour les horaires "piles"
+            const minutesPossibles = [0, 15, 30, 45];
+
             for (let i = 0; i < numHoraires; i++) {
                 let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
-                let minute = Math.floor(Math.random() * 60);  // Entre 0 et 59 minutes
-                if (minute < 10) minute = '0' + minute;  // Ajoute un 0 devant les minutes si nécessaire
+                let minute = minutesPossibles[Math.floor(Math.random() * minutesPossibles.length)];  // Sélectionne aléatoirement parmi 00, 15, 30, 45
 
-                const time = `${hour}:${minute}`;
+                const time = `${hour}:${minute < 10 ? '0' + minute : minute}`;  // Format avec deux chiffres pour les minutes
                 const button = document.createElement("button");
                 button.textContent = time;
                 horairesList.appendChild(button);
@@ -323,31 +171,8 @@
         });
 
         updateCalendar();
-        
-<script>
-    // Fonction pour générer des horaires aléatoires aux heures "piles"
-    function generateHoraires(day, month, year) {
-        horairesSection.style.display = 'block';
-        horairesList.innerHTML = '';
-
-        // Génère des horaires aléatoires entre 8h00 et 18h00
-        const numHoraires = Math.floor(Math.random() * 5) + 3;  // Entre 3 et 7 horaires
-
-        // Les minutes possibles pour les horaires "piles"
-        const minutesPossibles = [0, 15, 30, 45];
-
-        for (let i = 0; i < numHoraires; i++) {
-            let hour = Math.floor(Math.random() * 11) + 8;  // Entre 8 et 18 heures
-            let minute = minutesPossibles[Math.floor(Math.random() * minutesPossibles.length)];  // Sélectionne aléatoirement parmi 00, 15, 30, 45
-
-            const time = `${hour}:${minute < 10 ? '0' + minute : minute}`;  // Format avec deux chiffres pour les minutes
-            const button = document.createElement("button");
-            button.textContent = time;
-            horairesList.appendChild(button);
-        }
-    }
-</script>
-
+    </script>
 </body>
 </html>
+
 
