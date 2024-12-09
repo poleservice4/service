@@ -313,6 +313,13 @@
                 }
             }
 
+            // Trier les horaires dans l'ordre croissant
+            horairesDispo.sort((a, b) => {
+                const [aHour, aMinute] = a.split(':').map(Number);
+                const [bHour, bMinute] = b.split(':').map(Number);
+                return aHour - bHour || aMinute - bMinute;
+            });
+
             // Ajouter les horaires à la page
             horairesDispo.forEach(time => {
                 const button = document.createElement("button");
@@ -351,12 +358,12 @@
             updateCalendar();
         });
 
-        monthSelect.addEventListener("change", () => {
-            currentMonth = parseInt(monthSelect.value);
+        document.getElementById("month-select").addEventListener("change", (event) => {
+            currentMonth = parseInt(event.target.value);
             updateCalendar();
         });
 
-        updateCalendar();
+        updateCalendar(); // Initialisation du calendrier
     </script>
 </body>
 </html>
