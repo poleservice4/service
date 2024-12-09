@@ -181,6 +181,7 @@
             text-align: center;
             border-radius: 5px;
             color: #fff;
+            cursor: pointer;
         }
 
         .gamme-item img {
@@ -197,6 +198,13 @@
         .gamme-item p {
             font-size: 14px;
             color: #ccc;
+        }
+
+        .selected-gamme {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF6600;
         }
 
     </style>
@@ -242,15 +250,16 @@
         <div class="section gamme-selection">
             <h2>Sélection de la taille du véhicule</h2>
             <div class="gamme-items">
-                <div class="gamme-item">
+                <div class="gamme-item" onclick="selectGamme('R-Way 1 à 4 Personnes')">
                     <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
                     <h3>R-Way 1 à 4 Personnes</h3>
                 </div>
-                <div class="gamme-item">
+                <div class="gamme-item" onclick="selectGamme('R-Way 4 à 8 Personnes')">
                     <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
                     <h3>R-Way 4 à 8 Personnes</h3>
                 </div>
             </div>
+            <div class="selected-gamme" id="selected-gamme"></div>
         </div>
 
         <div class="button-container">
@@ -278,7 +287,7 @@
             for (let i = 0; i < monthNames.length; i++) {
                 const option = document.createElement("option");
                 option.value = i;
-                option.textContent = ${monthNames[i]} ${currentYear};
+                option.textContent = `${monthNames[i]} ${currentYear}`;
                 if (i === currentMonth) option.selected = true;
                 monthSelect.appendChild(option);
             }
@@ -328,7 +337,7 @@
             while (horairesDispo.length < 6) { // Limiter à 6 horaires différents par jour
                 const randomHour = hours[Math.floor(Math.random() * hours.length)];
                 const randomMinute = times[Math.floor(Math.random() * times.length)];
-                const time = ${randomHour}:${randomMinute};
+                const time = `${randomHour}:${randomMinute}`;
 
                 // S'assurer que l'heure n'est pas déjà ajoutée
                 if (!horairesDispo.includes(time)) {
@@ -356,6 +365,10 @@
                 });
                 horairesList.appendChild(button);
             });
+        }
+
+        function selectGamme(gamme) {
+            document.getElementById("selected-gamme").textContent = `Vous avez sélectionné : ${gamme}`;
         }
 
         document.getElementById("prev-month").addEventListener("click", () => {
