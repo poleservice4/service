@@ -18,30 +18,15 @@
         }
 
         .header {
-            background-color: #000;
-            padding: 20px;
             display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000; /* Fond noir */
         }
 
-        .logo-container {
-            display: flex;
-            position: absolute;
-            left: 10px;
-            top: 20px;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .logo-container img {
-            width: 50px;
-            height: auto;
-        }
-
-        .logo-taille2 {
-            transform: translateX(12px) scale(1.5);
+        .header img {
+            height: 40px; /* Hauteur des logos comme sur index.html */
         }
 
         .container {
@@ -63,6 +48,11 @@
             margin-bottom: 30px;
         }
 
+        .calendar, .horaires, .gamme-selection {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .calendar table {
             margin: 0 auto;
             border-collapse: collapse;
@@ -81,10 +71,46 @@
             font-weight: bold;
         }
 
+        .horaires button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .horaires button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .gamme-selection {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gamme-item {
+            width: 48%;
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            color: #fff;
+        }
+
         .gamme-item img {
             width: 100%;
             border-radius: 5px;
             margin-bottom: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
         }
 
         .button-container a {
@@ -95,21 +121,87 @@
             font-weight: bold;
             text-transform: uppercase;
             text-decoration: none;
+            border: none;
+        }
+
+        .button-container a:hover {
+            background-color: #e05500;
         }
     </style>
 </head>
 <body>
     <!-- En-tête avec les logos -->
     <div class="header">
-        <div class="logo-container">
-            <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
-            <img src="images/logo_rway.PNG" alt="Logo R-Way" class="logo-taille2">
-        </div>
+        <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
+        <img src="images/logo_rway.PNG" alt="Logo R-Way">
     </div>
 
     <div class="container">
         <h1>Organisation du Voyage</h1>
-        <!-- Contenu principal -->
+
+        <div class="section calendar">
+            <h2>Départ : Juin 2025</h2>
+            <table>
+                <tr>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mer</th>
+                    <th>Jeu</th>
+                    <th>Ven</th>
+                    <th>Sam</th>
+                    <th>Dim</th>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+                </tr>
+                <tr>
+                    <td>12</td><td>13</td><td class="active">14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+                </tr>
+                <tr>
+                    <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+                </tr>
+                <tr>
+                    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section horaires">
+            <h2>Horaire à sélectionner :</h2>
+            <button>10h30</button>
+            <button>10h45</button>
+            <button>11h</button>
+            <button>11h40</button>
+            <button>12h</button>
+            <button>12h35</button>
+            <button>13h10</button>
+            <button>13h35</button>
+            <button>13h50</button>
+            <button>14h15</button>
+            <button>14h30</button>
+            <button>15h</button>
+        </div>
+
+        <div class="section gamme-selection">
+            <h2>Sélection de la Gamme</h2>
+            <div class="gamme-item">
+                <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
+                <h3>R-Way 1 à 4 Personnes</h3>
+                <p>Sièges conducteur, Prises de recharge, Bluetooth, Tableau de bord, Espaces rangements</p>
+            </div>
+            <div class="gamme-item">
+                <img src="images/voiture_route.PNG" alt="R-Way 4 à 8 Personnes">
+                <h3>R-Way 4 à 8 Personnes</h3>
+                <p>Sièges conducteur, Table rétractable, Prises de recharge, Bluetooth, Espaces rangements</p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="finalisation.html">Continuer</a>
+        </div>
     </div>
 </body>
 </html>
