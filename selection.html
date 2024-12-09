@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobilize R-Way - Choix des Arrêts</title>
+    <title>Organisation du Voyage</title>
     <style>
-        /* --- Reset et structure de base --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +15,6 @@
             font-family: Arial, sans-serif;
             background-color: #111;
             color: #fff;
-            padding-top: 0; /* Retire la bande noire en haut */
         }
 
         .container {
@@ -54,91 +52,78 @@
             height: auto;
         }
 
-        /* --- Section principale --- */
-        .main-section {
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 24px;
-            color: #FF6600; /* Texte orange */
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .map-section img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .stops-list {
-            text-align: center; /* Centre l'ensemble du bloc de liste */
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-        .stops-list h2 {
-            font-size: 20px;
-            color: #FF6600; /* Titre orange */
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .stops-list ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centre tous les éléments de la liste */
-        }
-
-        .stops-list ul li {
-            font-size: 16px;
-            line-height: 1.8;
-            position: relative;
-            display: flex;
-            align-items: center; /* Aligne les points et le texte verticalement */
-            gap: 10px; /* Espacement entre le point orange et le texte */
-        }
-
-        .stops-list ul li::before {
-            content: "•"; /* Point orange */
-            color: #FF6600;
+        .title {
             font-size: 18px;
-        }
-
-        /* Mise en forme pour les villes spécifiques en orange */
-        .stops-list ul li.Paris,
-        .stops-list ul li.Chartres,
-        .stops-list ul li.Niort,
-        .stops-list ul li.LaRochelle {
-            color: #FF6600;
-        }
-
-        /* --- Style du bouton --- */
-        .button {
-            margin: 20px auto;
-            font-size: 18px;
-            padding: 10px 20px;
-            color: white;
-            text-transform: uppercase;
             font-weight: bold;
-            display: inline-block;
-            cursor: pointer;
-            text-decoration: none;
-            background-color: #FF6600; /* Fond orange */
-            transition: background-color 0.3s; /* Animation de transition */
+            margin-bottom: 60px;
+            text-align: center;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            color: #FF6600;
         }
 
-        .button:hover {
-            background-color: #FF9900; /* Fond orange plus clair au survol */
+        .gamme-selection {
+            margin-top: 40px;
+        }
+
+        .gamme-selection h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FF6600;
+        }
+
+        .gamme-items {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gamme-item {
+            flex: 1;
+            min-width: 250px;
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .gamme-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .gamme-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .gamme-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .gamme-item.selected {
+            border-color: #FF6600;
+            background-color: #222;
+        }
+
+        .gamme-item .selected-text {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #FF6600;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Logo et Header -->
         <div class="header">
             <div class="logo-container">
                 <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
@@ -146,32 +131,43 @@
             </div>
         </div>
 
-        <!-- Section principale -->
-        <div class="main-section">
-            <h1>Choix des Arrêts</h1>
+        <div class="title">Organisation du Voyage</div>
 
-            <!-- Carte avec itinéraire -->
-            <div class="map-section">
-                <img src="images/carte_proposition2.PNG" alt="Carte itinéraire de Paris à La Rochelle">
+        <div class="section gamme-selection">
+            <h2>Sélection de la taille du véhicule</h2>
+            <div class="gamme-items">
+                <div class="gamme-item" onclick="selectGamme(this)">
+                    <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
+                    <h3>R-Way 1 à 4 Personnes</h3>
+                    <p>Capacité : 1 à 4 personnes</p>
+                    <span class="selected-text" style="display: none;">Vous avez sélectionné R-Way 1 à 4 personnes</span>
+                </div>
+                <div class="gamme-item" onclick="selectGamme(this)">
+                    <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
+                    <h3>R-Way 4 à 8 Personnes</h3>
+                    <p>Capacité : 4 à 8 personnes</p>
+                    <span class="selected-text" style="display: none;">Vous avez sélectionné R-Way 4 à 8 personnes</span>
+                </div>
             </div>
+        </div>
 
-            <!-- Liste des arrêts -->
-            <div class="stops-list">
-                <h2>Choisissez vos Arrêts</h2>
-                <ul>
-                    <li class="Paris">Paris</li>
-                    <li class="Chartres">Chartres</li>
-                    <li>Orléans</li>
-                    <li>Tours</li>
-                    <li>Poitiers</li>
-                    <li class="Niort">Niort</li>
-                    <li class="LaRochelle">La Rochelle</li>
-                    <li>Le Mans</li>
-                    <li>Angers</li>
-                </ul>
-            </div>
-            <a href="valider.html" class="button voyager">VALIDER</a>
+        <div class="button-container">
+            <a href="continuer.html">Continuer</a>
         </div>
     </div>
+
+    <script>
+        function selectGamme(element) {
+            // Retirer la sélection d'autres éléments
+            document.querySelectorAll(".gamme-item").forEach(item => {
+                item.classList.remove("selected");
+                item.querySelector(".selected-text").style.display = "none"; // Masquer le texte
+            });
+
+            // Ajouter la sélection à l'élément cliqué
+            element.classList.add("selected");
+            element.querySelector(".selected-text").style.display = "block"; // Afficher le texte
+        }
+    </script>
 </body>
 </html>
