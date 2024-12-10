@@ -100,26 +100,13 @@
             display: flex;
             align-items: center; /* Aligne les points et le texte verticalement */
             gap: 10px; /* Espacement entre le point orange et le texte */
+            color: #FF6600; /* Couleur orange pour tous les noms */
         }
 
         .stops-list ul li::before {
             content: "•"; /* Point orange */
             color: #FF6600;
             font-size: 18px;
-        }
-
-        /* Mise en forme pour les villes spécifiques en orange */
-        .stops-list ul li.Paris,
-        .stops-list ul li.Chartres,
-        .stops-list ul li.Orléans,
-        .stops-list ul li.Tours,
-        .stops-list ul li.LaRochelle {
-            color: #FF6600;
-        }
-
-        /* Ville Niort pas en orange */
-        .stops-list ul li.Niort {
-            color: #fff;
         }
 
         /* --- Style du bouton --- */
@@ -165,21 +152,25 @@
             <div class="stops-list">
                 <h2>Choisissez vos Arrêts</h2>
                 <ul>
-                    <li class="Paris">Paris</li>
-                    <li class="Chartres">Chartres</li>
-                    <li class="Orléans">Orléans</li>
-                    <li class="Tours">Tours</li>
+                    <li>Paris</li>
+                    <li>Chartres</li>
+                    <li>Orléans</li>
+                    <li>Tours</li>
                     <li>Poitiers</li>
-                    <li class="Niort">Niort</li>
-                    <li class="LaRochelle">La Rochelle</li>
+                    <li>Niort</li>
+                    <li>La Rochelle</li>
                     <li>Le Mans</li>
                     <li>Angers</li>
                 </ul>
+            </div>
+
             <div class="button-container">
-            <a href="valider.html">VALIDER</a>
+                <a href="valider.html" class="button">VALIDER</a>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
 
 
