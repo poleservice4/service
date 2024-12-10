@@ -78,5 +78,82 @@
         /* --- Informations voyage --- */
         .details-section {
             text-align: left;
-            margin: 20px 10px
+            margin: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .details-section span {
+            color: #FF6600;
+        }
+
+        /* --- Section paiement --- */
+        .payment-section {
+            text-align: left;
+            margin: 20px 10px;
+        }
+
+        .payment-section img {
+            width: 60px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* --- Boutons de paiement --- */
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div class="header">
+            <img src="images/logo_rway.PNG" alt="Logo R-Way">
+        </div>
+
+        <!-- Titre principal -->
+        <h1>Récapitulatif du Voyage Programmé</h1>
+
+        <!-- Section arrêts -->
+        <div class="stops-section">
+            <div class="stop orange">Paris</div>
+            <div class="stop">Chartres</div>
+            <div class="stop">Orléans</div>
+            <div class="stop">Tours</div>
+            <div class="stop">Poitiers</div>
+            <div class="stop">Niort</div>
+            <div class="stop orange">La Rochelle</div>
+        </div>
+
+        <!-- Section carte -->
+        <div class="map-section">
+            <img src="images/carte_itineraire.PNG" alt="Carte du trajet">
+        </div>
+
+        <!-- Informations sur le voyage -->
+        <div class="details-section">
+            <p><span>Départ :</span> 3 juin 2025</p>
+            <p><span>Horaire :</span> 13h30</p>
+            <p><span>Gamme choisie :</span> R-Way 4 à 8 personnes</p>
+            <p><span>Type :</span> "Deluxe"</p>
+        </div>
+
+        <!-- Récapitulatif de paiement -->
+        <div class="payment-section">
+            <h2>Récapitulatif de Paiement</h2>
+            <div class="payment-methods">
+                <img src="images/paypal_logo.png" alt="PayPal">
+                <img src="images/cb_logo.png" alt="Carte Bancaire">
+                <img src="images/google_pay_logo.png" alt="Google Pay">
+                <img src="images/apple_pay_logo.png" alt="Apple Pay">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
 
