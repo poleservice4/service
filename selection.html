@@ -100,18 +100,54 @@
             display: flex;
             align-items: center; /* Aligne les points et le texte verticalement */
             gap: 10px; /* Espacement entre le point orange et le texte */
-            color: #FF6600; /* Couleur orange par défaut */
-        }
-
-        .stops-list ul li.le-mans,
-        .stops-list ul li.angers {
-            color: white; /* Changer la couleur du texte de "Le Mans" et "Angers" à blanc */
         }
 
         .stops-list ul li::before {
             content: "•"; /* Point orange */
             color: #FF6600;
             font-size: 18px;
+        }
+
+        /* Mise en forme pour les villes spécifiques en orange */
+        .stops-list ul li.Paris,
+        .stops-list ul li.Chartres,
+        .stops-list ul li.Niort,
+        .stops-list ul li.LaRochelle {
+            color: #FF6600;
+        }
+
+        /* --- Formulaires de recherche --- */
+        .search-container {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 45%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #FF6600;
+            border-radius: 5px;
+            background-color: #121212;
+            color: #fff;
+            outline: none;
+            margin: 0 2%;
+            display: inline-block;
+            transition: border-color 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: #FF9900;
+        }
+
+        .divider {
+            width: 6px;
+            background-color: #FF6600;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
         }
 
         /* --- Style du bouton --- */
@@ -132,31 +168,6 @@
         .button:hover {
             background-color: #FF9900; /* Fond orange plus clair au survol */
         }
-
-        /* --- Barre de recherche pour départ et arrivée --- */
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .search-bar input[type="text"] {
-            width: 200px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            margin: 0 10px;
-            background-color: #333;
-            color: #FFF;
-            border-bottom: 2px solid #FF6600; /* Trait orange sous l'entrée */
-        }
-
-        .search-bar .separator {
-            width: 100px;
-            height: 2px;
-            background-color: #FF6600;
-        }
     </style>
 </head>
 <body>
@@ -172,6 +183,15 @@
         <!-- Section principale -->
         <div class="main-section">
             <h1>Choix des Arrêts</h1>
+            
+            </div>
+
+            <!-- Formulaire de recherche -->
+            <div class="search-container">
+                <input type="text" placeholder="Ville de départ">
+                <div class="divider"></div>
+                <input type="text" placeholder="Ville d'arrivée">
+            </div>
 
             <!-- Carte avec itinéraire -->
             <div class="map-section">
@@ -182,24 +202,16 @@
             <div class="stops-list">
                 <h2>Choisissez vos Arrêts</h2>
                 <ul>
-                    <li>Paris</li>
-                    <li>Chartres</li>
-                    <li>Orléans</li>
-                    <li>Tours</li>
-                    <li>Poitiers</li>
-                    <li>Niort</li>
-                    <li class="le-mans">Le Mans</li>
-                    <li class="angers">Angers</li>
-                    <li>La Rochelle</li>
+                    <li class="Paris">Paris</li>
+                    <li class="Chartres">Chartres</li>
+                    <li class="orléans>"Orléans</li>
+                    <li class="tours">Tours</li>
+                    <li class="poitiers">Poitiers</li>
+                    <li class="Niort">Niort</li>
+                    <li>Le Mans</li>
+                    <li>Angers</li>
+                    <li class="LaRochelle">La Rochelle</li>
                 </ul>
-            </div>
-
-            <!-- Barre de recherche pour départ et arrivée avec trait orange au milieu -->
-            <div class="search-bar">
-                <input type="text" placeholder="Ville de départ">
-                <div class="separator"></div>
-                <input type="text" placeholder="Ville d'arrivée">
-            </div>
 
             <div class="button-container">
                 <a href="valider.html" class="button">VALIDER</a>
@@ -208,7 +220,6 @@
     </div>
 </body>
 </html>
-
 
 
 
