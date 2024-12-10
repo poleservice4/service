@@ -100,7 +100,12 @@
             display: flex;
             align-items: center; /* Aligne les points et le texte verticalement */
             gap: 10px; /* Espacement entre le point orange et le texte */
-            color: #FF6600; /* Couleur orange pour tous les noms */
+            color: #FF6600; /* Couleur orange par défaut */
+        }
+
+        .stops-list ul li.le-mans,
+        .stops-list ul li.angers {
+            color: white; /* Changer la couleur du texte de "Le Mans" et "Angers" à blanc */
         }
 
         .stops-list ul li::before {
@@ -158,9 +163,9 @@
                     <li>Tours</li>
                     <li>Poitiers</li>
                     <li>Niort</li>
-                    <li>Le Mans</li>
+                    <li class="le-mans">Le Mans</li>
                     <li>Angers</li>
-                    <li>La Rochelle</li>
+                    <li class="angers">La Rochelle</li>
                 </ul>
             </div>
 
@@ -171,6 +176,7 @@
     </div>
 </body>
 </html>
+
 
 
 
