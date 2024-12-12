@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobilize R-Way - Récapitulatif du Voyage</title>
+    <title>Récapitulatif du Voyage</title>
     <style>
-        /* --- Reset de base --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,152 +15,146 @@
             font-family: Arial, sans-serif;
             background-color: #000;
             color: #fff;
-        }
-
-        /* --- Conteneur principal --- */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* --- Colonne de gauche (informations) --- */
-        .info-column {
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .left-section {
             flex: 1;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .logo {
-            font-size: 28px;
+        .title {
+            font-size: 24px;
             font-weight: bold;
+            text-transform: uppercase;
+            color: #FF6600;
             margin-bottom: 20px;
         }
 
-        .logo span {
-            color: #FF6600;
+        .route {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        h1 {
-            font-size: 24px;
-            text-transform: uppercase;
-            color: #FF6600;
-            margin-bottom: 40px;
-        }
-
-        .stops {
-            text-align: left;
-            border-left: 3px solid #FF6600;
-            padding-left: 15px;
-            margin-bottom: 40px;
-        }
-
-        .stop {
+        .route span {
+            display: block;
             font-size: 18px;
-            line-height: 2;
+            margin: 10px 0;
         }
 
-        .stop.orange {
+        .route span:first-child {
+            color: #FF6600;
+            font-weight: bold;
+        }
+
+        .route span:last-child {
             color: #FF6600;
             font-weight: bold;
         }
 
         .details {
+            margin-bottom: 20px;
+        }
+
+        .details p {
+            margin: 5px 0;
             font-size: 16px;
-            margin-bottom: 40px;
-            line-height: 1.8;
         }
 
         .details span {
             color: #FF6600;
         }
 
-        h2 {
-            font-size: 20px;
-            color: white;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+        .payment {
+            text-align: center;
         }
 
-        .payment-methods {
-            display: flex;
-            gap: 20px;
-            margin-top: 10px;
+        .payment img {
+            width: 50px;
+            margin: 5px;
         }
 
-        .payment-methods img {
-            width: 100px; /* Agrandissement des images */
-        }
-
-        /* --- Colonne de droite (carte) --- */
-        .map-column {
+        .right-section {
             flex: 1;
-            text-align: right;
+            position: relative;
         }
 
         .map {
-            position: relative;
             width: 100%;
-            padding-top: 75%; /* Ratio 4:3 */
-            background-image: url('images/carte_proposition3.PNG');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            width: 400%; /* Agrandissement de la carte à 4 fois la taille originale */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logos {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logos img {
+            width: 100px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Colonne de gauche -->
-        <div class="info-column">
-            <!-- Logo -->
-            <div class="logo">
-                MOBILIZE <span>R-WAY</span>
+        <div class="left-section">
+            <div class="title">Récapitulatif du voyage</div>
+            <div class="route">
+                <span>Paris</span>
+                <span>|</span>
+                <span>Chartres</span>
+                <span>Orléans</span>
+                <span>Tour</span>
+                <span>Poitiers</span>
+                <span>Niort</span>
+                <span>|</span>
+                <span>La Rochelle</span>
             </div>
-
-            <!-- Titre -->
-            <h1>Récapitulatif du voyage programmé</h1>
-
-            <!-- Liste des arrêts -->
-            <div class="stops">
-                <div class="stop orange">Paris</div>
-                <div class="stop">Chartres</div>
-                <div class="stop">Orléans</div>
-                <div class="stop">Tours</div>
-                <div class="stop">Poitiers</div>
-                <div class="stop">Niort</div>
-                <div class="stop orange">La Rochelle</div>
-            </div>
-
-            <!-- Détails -->
             <div class="details">
-                <p><span>Départ :</span> 3 juin 2025</p>
-                <p><span>Horaire :</span> 13h30</p>
-                <p><span>Gamme choisie :</span> R-Way 4 à 8 personnes</p>
-                <p><span>Type :</span> "Deluxe"</p>
+                <p>Départ : <span>3 juin 2025</span></p>
+                <p>Horaire : <span>13h30</span></p>
+                <p>Gamme choisie : <span>R-Way 4 à 8 personnes</span></p>
+                <p>"<span>Deluxe</span>"</p>
             </div>
-
-            <!-- Paiement -->
-            <h2>Récapitulatif de paiement</h2>
-            <div class="payment-methods">
-                <img src="images/paypal.PNG" alt="PayPal">
-                <img src="images/cb.PNG" alt="Carte Bancaire">
-                <img src="images/googlepay.PNG" alt="Google Pay">
-                <img src="images/applepay.PNG" alt="Apple Pay">
+            <div class="payment">
+                <div>Récapitulatif de paiement</div>
+                <img src="images/paypal.png" alt="PayPal">
+                <img src="images/cb.png" alt="Carte Bancaire">
+                <img src="images/gpay.png" alt="Google Pay">
+                <img src="images/applepay.png" alt="Apple Pay">
             </div>
         </div>
-
-        <!-- Colonne de droite -->
-        <div class="map-column">
-            <div class="map"></div>
+        <div class="right-section">
+            <img src="images/map.png" alt="Carte du trajet" class="map">
+            <div class="logos">
+                <img src="images/logo_mobilize.PNG" alt="Mobilize Logo">
+                <img src="images/logo_rway.PNG" alt="R-Way Logo">
+            </div>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
