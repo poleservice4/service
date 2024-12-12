@@ -14,140 +14,138 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #111;
+            background-color: #000;
             color: #fff;
         }
 
         /* --- Conteneur principal --- */
         .container {
-            max-width: 400px;
+            max-width: 1200px;
             margin: auto;
-            background-color: #121212;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            position: relative;
-            padding: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        /* --- En-tête et logo --- */
-        .header {
-            text-align: center;
+        /* --- Colonne de gauche (informations) --- */
+        .info-column {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .header img {
-            width: 100px;
-        }
-
-        /* --- Titre principal --- */
-        h1 {
-            font-size: 18px;
+        .logo span {
             color: #FF6600;
-            text-align: center;
-            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
             text-transform: uppercase;
+            color: #FF6600;
+            margin-bottom: 40px;
         }
 
-        /* --- Liste des arrêts --- */
-        .stops-section {
-            text-align: center;
-            margin: 20px 10px;
-            border-left: 5px solid #FF6600; /* Augmentation de la largeur de la ligne */
-            padding-left: 10px; /* Ajustement pour centrer les noms des villes */
-            padding-right: 5px; /* Déplacement vers la droite de la ligne orange */
+        .stops {
+            text-align: left;
+            border-left: 3px solid #FF6600;
+            padding-left: 15px;
+            margin-bottom: 40px;
         }
 
-        .stops-section .stop {
-            font-size: 16px;
-            line-height: 1.8;
-            color: white;
-            padding-left: 5px; /* Ajustement pour le centrage de la barre */
+        .stop {
+            font-size: 18px;
+            line-height: 2;
         }
 
-        .stops-section .stop.orange {
+        .stop.orange {
             color: #FF6600;
             font-weight: bold;
         }
 
-        /* --- Section carte --- */
-        .map-section img {
-            width: 400%; /* Taille 4 fois plus large */
-            height: auto; /* Garde les proportions */
-            border-radius: 10px;
-            margin: 20px 0;
+        .details {
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
-        /* --- Informations voyage --- */
-        .details-section {
-            text-align: left;
-            margin: 20px 10px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .details-section span {
+        .details span {
             color: #FF6600;
         }
 
-        /* --- Section paiement --- */
-        .payment-section {
-            text-align: left;
-            margin: 20px 10px;
+        h2 {
+            font-size: 20px;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .payment-section img {
-            width: 60px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        /* --- Boutons de paiement --- */
         .payment-methods {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
         }
 
+        .payment-methods img {
+            width: 60px;
+        }
+
+        /* --- Colonne de droite (carte) --- */
+        .map-column {
+            flex: 1;
+            text-align: right;
+        }
+
+        .map {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* Ratio 4:3 */
+            background-image: url('images/carte_proposition2.PNG');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- En-tête -->
-        <div class="header">
-            <img src="images/logo_rway.PNG" alt="Logo R-Way">
-        </div>
+        <!-- Colonne de gauche -->
+        <div class="info-column">
+            <!-- Logo -->
+            <div class="logo">
+                MOBILIZE <span>R-WAY</span>
+            </div>
 
-        <!-- Titre principal -->
-        <h1>Récapitulatif du Voyage Programmé</h1>
+            <!-- Titre -->
+            <h1>Récapitulatif du voyage programmé</h1>
 
-        <!-- Section arrêts -->
-        <div class="stops-section">
-            <div class="stop orange">Paris</div>
-            <div class="stop">Chartres</div>
-            <div class="stop">Orléans</div>
-            <div class="stop">Tours</div>
-            <div class="stop">Poitiers</div>
-            <div class="stop">Niort</div>
-            <div class="stop orange">La Rochelle</div>
-        </div>
+            <!-- Liste des arrêts -->
+            <div class="stops">
+                <div class="stop orange">Paris</div>
+                <div class="stop">Chartres</div>
+                <div class="stop">Orléans</div>
+                <div class="stop">Tours</div>
+                <div class="stop">Poitiers</div>
+                <div class="stop">Niort</div>
+                <div class="stop orange">La Rochelle</div>
+            </div>
 
-        <!-- Section carte -->
-        <div class="map-section">
-            <img src="images/carte_proposition2.PNG" alt="Carte du trajet">
-        </div>
+            <!-- Détails -->
+            <div class="details">
+                <p><span>Départ :</span> 3 juin 2025</p>
+                <p><span>Horaire :</span> 13h30</p>
+                <p><span>Gamme choisie :</span> R-Way 4 à 8 personnes</p>
+                <p><span>Type :</span> "Deluxe"</p>
+            </div>
 
-        <!-- Informations sur le voyage -->
-        <div class="details-section">
-            <p><span>Départ :</span> 3 juin 2025</p>
-            <p><span>Horaire :</span> 13h30</p>
-            <p><span>Gamme choisie :</span> R-Way 4 à 8 personnes</p>
-            <p><span>Type :</span> "Deluxe"</p>
-        </div>
-
-        <!-- Récapitulatif de paiement -->
-        <div class="payment-section">
-            <h2>Récapitulatif de Paiement</h2>
+            <!-- Paiement -->
+            <h2>Récapitulatif de paiement</h2>
             <div class="payment-methods">
                 <img src="images/paypal.PNG" alt="PayPal">
                 <img src="images/cb.PNG" alt="Carte Bancaire">
@@ -155,9 +153,15 @@
                 <img src="images/applepay.PNG" alt="Apple Pay">
             </div>
         </div>
+
+        <!-- Colonne de droite -->
+        <div class="map-column">
+            <div class="map"></div>
+        </div>
     </div>
 </body>
 </html>
+
 
 
 
