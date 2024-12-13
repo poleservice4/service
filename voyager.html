@@ -214,7 +214,7 @@
         .gamme-item.selected {
             border-color: orange;
         }
-    </style>
+     </style>
 </head>
 <body>
     <div class="container">
@@ -259,7 +259,7 @@
 
         <div class="section gamme-selection">
             <h2>Sélection de la taille du véhicule</h2>
-            <div class="gamme-items">
+            <div class="gamme-items" id="taille-vehicule">
                 <div class="gamme-item" id="gamme-1-4">
                     <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
                     <h3>R-Way 1 à 4 Personnes</h3>
@@ -273,7 +273,7 @@
 
         <div class="section gamme-selection">
             <h2>Sélection de la gamme</h2>
-            <div class="gamme-items">
+            <div class="gamme-items" id="selection-gamme">
                 <div class="gamme-item" id="gamme-classique">
                     <img src="images/interieur1.PNG" alt="Gamme Classique">
                     <h3>Gamme Classique</h3>
@@ -442,12 +442,18 @@
             generateCalendar(currentMonth, currentYear);
         });
 
-        document.querySelectorAll(".gamme-item").forEach(item => {
-            item.addEventListener("click", () => {
-                document.querySelectorAll(".gamme-item.selected").forEach(selected => selected.classList.remove("selected"));
-                item.classList.add("selected");
+        function setupSelection(sectionId) {
+            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
             });
-        });
+        }
+
+        setupSelection("taille-vehicule");
+        setupSelection("selection-gamme");
 
         populateMonthSelect();
         populateYearSelect();
