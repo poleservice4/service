@@ -204,6 +204,16 @@
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
 
+      .gamme-item {
+            cursor: pointer;
+            border: 2px solid transparent;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+
+        .gamme-item.selected {
+            border-color: orange;
+        }
     </style>
 </head>
 <body>
@@ -416,10 +426,16 @@
             generateCalendar(currentMonth, currentYear);
         });
 
+        document.querySelectorAll(".gamme-item").forEach(item => {
+            item.addEventListener("click", () => {
+                document.querySelectorAll(".gamme-item.selected").forEach(selected => selected.classList.remove("selected"));
+                item.classList.add("selected");
+            });
+        });
+
         populateMonthSelect();
         populateYearSelect();
         generateCalendar(currentMonth, currentYear);
     </script>
 </body>
 </html>
-
