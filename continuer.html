@@ -52,6 +52,11 @@
         .logo-container img {
             width: 50px;
             height: auto;
+            text-align: left;
+        }
+
+        .logo-taille2 {
+            transform: translateX(12px) scale(1.5);
         }
 
         /* --- Section principale --- */
@@ -175,43 +180,42 @@
         <!-- Logo et Header -->
         <div class="header">
             <div class="logo-container">
-                <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
-                <img src="images/logo_rway.PNG" alt="Logo R-Way">
+                <img src="images/logo_mobilize.PNG" alt="Logo 1">
+                <img src="images/logo_rway.PNG" alt="Logo 2" class="logo-taille2">
             </div>
         </div>
 
         <!-- Section principale -->
         <div class="main-section">
             <h1>Choix des Arrêts</h1>
-            
-            </div>
+        </div>
 
-            <!-- Formulaire de recherche -->
-            <div class="search-container">
-                <input type="text" placeholder="Ville de départ">
-                <div class="divider"></div>
-                <input type="text" placeholder="Ville d'arrivée">
-            </div>
+        <!-- Formulaire de recherche -->
+        <div class="search-container">
+            <input type="text" placeholder="Ville de départ">
+            <div class="divider"></div>
+            <input type="text" placeholder="Ville d'arrivée">
+        </div>
 
-            <!-- Carte avec itinéraire -->
-            <div class="map-section">
-                <a href="selection.html"><img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle"></a>
-            </div>
+        <!-- Carte avec itinéraire -->
+        <div class="map-section">
+            <a href="selection.html"><img src="images/carte_proposition1.PNG" alt="Carte itinéraire de Paris à La Rochelle"></a>
+        </div>
 
-            <!-- Liste des arrêts -->
-            <div class="stops-list">
-                <h2>Choisissez vos Arrêts</h2>
-                <ul>
-                    <li class="Paris">Paris</li>
-                    <li class="Chartres">Chartres</li>
-                    <li>Orléans</li>
-                    <li>Tours</li>
-                    <li>Poitiers</li>
-                    <li class="Niort">Niort</li>
-                    <li>Le Mans</li>
-                    <li class="Angers">Angers</li>
-                    <li class="LaRochelle">La Rochelle</li>
-                </ul>
+        <!-- Liste des arrêts -->
+        <div class="stops-list">
+            <h2>Choisissez vos Arrêts</h2>
+            <ul>
+                <li class="Paris">Paris</li>
+                <li class="Chartres">Chartres</li>
+                <li>Orléans</li>
+                <li>Tours</li>
+                <li>Poitiers</li>
+                <li class="Niort">Niort</li>
+                <li>Le Mans</li>
+                <li class="Angers">Angers</li>
+                <li class="LaRochelle">La Rochelle</li>
+            </ul>
 
             <div class="button-container">
                 <a href="valider.html" class="button">VALIDER</a>
@@ -220,8 +224,6 @@
     </div>
 </body>
 </html>
-
-
 
 
 
