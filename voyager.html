@@ -219,9 +219,12 @@
 
         <div class="section calendar">
             <div class="calendar-controls">
+                <button id="prev-year">◀◀</button>
                 <button id="prev-month">◀</button>
                 <select id="month-select"></select>
+                <select id="year-select"></select>
                 <button id="next-month">▶</button>
+                <button id="next-year">▶▶</button>
             </div>
             <table id="calendar-table">
                 <thead>
@@ -264,17 +267,6 @@
     </div>
 
     <script>
-        // Sélection du véhicule
-        const gammeItems = document.querySelectorAll('.gamme-item');
-        gammeItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Retirer la sélection des autres éléments
-                gammeItems.forEach(i => i.classList.remove('selected'));
-                // Ajouter un cadre orange autour de l'élément sélectionné
-                item.classList.add('selected');
-            });
-        });
-
         const monthNames = [
             "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
@@ -285,6 +277,7 @@
         let currentYear = today.getFullYear();
 
         const monthSelect = document.getElementById("month-select");
+        const yearSelect = document.getElementById("year-select");
         const calendarTable = document.getElementById("calendar-table").querySelector("tbody");
         const horairesSection = document.getElementById("horaires-section");
         const horairesList = document.getElementById("horaires-list");
@@ -294,9 +287,20 @@
             for (let i = 0; i < monthNames.length; i++) {
                 const option = document.createElement("option");
                 option.value = i;
-                option.textContent = `${monthNames[i]} ${currentYear}`;
+                option.textContent = monthNames[i];
                 if (i === currentMonth) option.selected = true;
                 monthSelect.appendChild(option);
+            }
+        }
+
+        function populateYearSelect() {
+            yearSelect.innerHTML = "";
+            for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                if (i === currentYear) option.selected = true;
+                yearSelect.appendChild(option);
             }
         }
 
@@ -321,7 +325,7 @@
                         cell.addEventListener("click", () => {
                             document.querySelectorAll("td.active").forEach(td => td.classList.remove("active"));
                             cell.classList.add("active");
-                            generateHoraires(day, month, year);  // Génère des horaires pour le jour sélectionné
+                            generateHoraires(day, month, year);
                         });
                         day++;
                     }
@@ -335,39 +339,31 @@
             horairesSection.style.display = 'block';
             horairesList.innerHTML = '';
 
-            // Horaires fixes : pile, quart, demi, moins le quart
-            const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]; // De 8h à 18h
-            const times = ["00", "15", "30", "45"]; // Les minutes possibles
+            const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+            const times = ["00", "15", "30", "45"];
 
-            // Générer des horaires aléatoires pour ce jour
             let horairesDispo = [];
-            while (horairesDispo.length < 6) { // Limiter à 6 horaires différents par jour
+            while (horairesDispo.length < 6) {
                 const randomHour = hours[Math.floor(Math.random() * hours.length)];
                 const randomMinute = times[Math.floor(Math.random() * times.length)];
                 const time = `${randomHour}:${randomMinute}`;
 
-                // S'assurer que l'heure n'est pas déjà ajoutée
                 if (!horairesDispo.includes(time)) {
                     horairesDispo.push(time);
                 }
             }
 
-            // Trier les horaires dans l'ordre croissant
             horairesDispo.sort((a, b) => {
                 const [aHour, aMinute] = a.split(':').map(Number);
                 const [bHour, bMinute] = b.split(':').map(Number);
                 return aHour - bHour || aMinute - bMinute;
             });
 
-            // Ajouter les horaires à la page
             horairesDispo.forEach(time => {
                 const button = document.createElement("button");
                 button.textContent = time;
                 button.addEventListener("click", () => {
-                    // Désélectionner l'heure précédemment sélectionnée
                     document.querySelectorAll(".horaires button.selected").forEach(btn => btn.classList.remove("selected"));
-
-                    // Ajouter la classe 'selected' à l'heure cliquée
                     button.classList.add("selected");
                 });
                 horairesList.appendChild(button);
@@ -375,15 +371,39 @@
         }
 
         document.getElementById("prev-month").addEventListener("click", () => {
-            currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
             generateCalendar(currentMonth, currentYear);
             populateMonthSelect();
+            populateYearSelect();
         });
 
         document.getElementById("next-month").addEventListener("click", () => {
-            currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
             generateCalendar(currentMonth, currentYear);
             populateMonthSelect();
+            populateYearSelect();
+        });
+
+        document.getElementById("prev-year").addEventListener("click", () => {
+            currentYear--;
+            generateCalendar(currentMonth, currentYear);
+            populateYearSelect();
+        });
+
+        document.getElementById("next-year").addEventListener("click", () => {
+            currentYear++;
+            generateCalendar(currentMonth, currentYear);
+            populateYearSelect();
         });
 
         monthSelect.addEventListener("change", (event) => {
@@ -391,9 +411,15 @@
             generateCalendar(currentMonth, currentYear);
         });
 
-        // Initialiser le mois actuel
+        yearSelect.addEventListener("change", (event) => {
+            currentYear = parseInt(event.target.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+
         populateMonthSelect();
+        populateYearSelect();
         generateCalendar(currentMonth, currentYear);
     </script>
 </body>
 </html>
+
