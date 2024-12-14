@@ -72,14 +72,18 @@
         }
 
         .title {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             text-align: center;
-            width: 40%;
-            margin-left: auto;
-            margin-right: auto;
             color: #FF6600;
+        }
+
+        .text-content {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: white;
         }
 
         .calendar {
@@ -225,16 +229,6 @@
         .gamme-item.selected {
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
-.gamme-item {
-            cursor: pointer;
-            border: 2px solid transparent;
-            padding: 10px;
-            transition: border-color 0.3s;
-        }
-
-        .gamme-item.selected {
-            border-color: orange;
-        }
     </style>
 </head>
 <body>
@@ -246,8 +240,14 @@
             </div>
         </div>
 
-        <div class="title">Organisation du Voyage</div>
+        <!-- Titre et texte d'explication -->
+        <div class="title">ORGANISATION DU <span style="color: #FF6600;">VOYAGE</span></div>
+        <div class="text-content">
+            <p>Pour organiser un voyage avec le module de transport R-Way, rien de plus simple : 
+            il vous suffit de choisir votre destination, réserver un créneau, et profiter d’une expérience unique.</p>
+        </div>
 
+        <!-- Section existante -->
         <div class="section calendar">
             <div class="calendar-controls">
                 <button id="prev-year">◀◀</button>
