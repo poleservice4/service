@@ -91,4 +91,205 @@
             background-color: #333;
         }
 
-        .calendar-
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calendar-controls button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .horaires button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #FF6600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .horaires button:hover {
+            background-color: #FF6600;
+            color: #000;
+        }
+
+        .horaires button.selected {
+            background-color: #FF6600;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            background-color: #FF6600;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+        }
+
+        .button-container a:hover {
+            background-color: #e05500;
+        }
+
+        .gamme-selection {
+            margin-top: 40px;
+        }
+
+        .gamme-selection h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FF6600;
+        }
+
+        .gamme-items {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Espacement entre les éléments */
+            flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+        }
+
+        .gamme-item {
+            flex: 1;
+            min-width: 250px; /* Fixe une largeur minimale pour chaque item */
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            color: #fff;
+            transition: border 0.3s;
+            cursor: pointer;
+        }
+
+        .gamme-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .gamme-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .gamme-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .gamme-item.selected {
+            border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="images/logo_mobilize.PNG" alt="Logo Mobilize">
+                <img src="images/logo_rway.PNG" alt="Logo R-Way">
+            </div>
+        </div>
+
+        <div class="title">Organisation du Voyage</div>
+
+        <div class="section calendar">
+            <div class="calendar-controls">
+                <button id="prev-year">◀◀</button>
+                <button id="prev-month">◀</button>
+                <select id="month-select"></select>
+                <select id="year-select"></select>
+                <button id="next-month">▶</button>
+                <button id="next-year">▶▶</button>
+            </div>
+            <table id="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mer</th>
+                        <th>Jeu</th>
+                        <th>Ven</th>
+                        <th>Sam</th>
+                        <th>Dim</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="section horaires" id="horaires-section" style="display: none;">
+            <h2>Horaire à sélectionner :</h2>
+            <div id="horaires-list"></div>
+        </div>
+
+        <div class="section gamme-selection">
+            <h2>Sélection de la taille du véhicule</h2>
+            <div class="gamme-items" id="taille-vehicule">
+                <div class="gamme-item" id="gamme-1-4">
+                    <img src="images/voiture_rail.PNG" alt="R-Way 1 à 4 Personnes">
+                    <h3>R-Way 1 à 4 Personnes</h3>
+                </div>
+                <div class="gamme-item" id="gamme-4-8">
+                    <img src="images/voiture_route2.JPG" alt="R-Way 4 à 8 Personnes">
+                    <h3>R-Way 4 à 8 Personnes</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="section gamme-selection">
+            <h2>Sélection de la gamme</h2>
+            <div class="gamme-items" id="selection-gamme">
+                <div class="gamme-item" id="gamme-classique">
+                    <img src="images/interieur1.PNG" alt="Gamme Classique">
+                    <h3>Gamme Classique</h3>
+                    <p>Siège conducteur, assises, prises, table rétractable, espace rangement, tableau de bord</p>
+                </div>
+                <div class="gamme-item" id="gamme-plus">
+                    <img src="images/interieur2.JPG" alt="Gamme +">
+                    <h3>Gamme +</h3>
+                    <p>Gamme classique avec wifi, couchages, toilettes, tiroir isotherme, mini-réfrigérateur, literie</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="continuer.html">Continuer</a>
+        </div>
+    </div>
+
+    <script>
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const monthSelect = document.get
