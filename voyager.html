@@ -282,32 +282,3 @@
                 <div class="gamme-item" id="gamme-plus">
                     <img src="images/interieur2.JPG" alt="Gamme +">
                     <h3>Gamme +</h3>
-                    <p>Gamme classique avec wifi, couchages, toilettes, tiroir isotherme, mini-réfrigérateur, literie</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="button-container">
-            <a href="#">Réserver</a>
-        </div>
-    </div>
-
-    <script>
-        function setupSelection(sectionId) {
-            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    // Supprimer la classe "selected" de tous les éléments
-                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
-                    // Ajouter la classe "selected" à l'élément cliqué
-                    item.classList.add("selected");
-                });
-            });
-        }
-
-        // Initialiser la sélection des véhicules et des gammes
-        setupSelection("taille-vehicule");
-        setupSelection("selection-gamme");
-    </script>
-</body>
-</html>
