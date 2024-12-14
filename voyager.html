@@ -293,10 +293,22 @@
     </div>
 
     <script>
-        const monthNames = [
-            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
-            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-        ];
+        // Correction de la sélection des véhicules et gammes
+        function setupSelection(sectionId) {
+            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);  // Correction ici avec le bon sélecteur
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    // Retirer la classe 'selected' de tous les éléments
+                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
+                    // Ajouter la classe 'selected' à l'élément cliqué
+                    item.classList.add("selected");
+                });
+            });
+        }
 
-        const today = new Date();
-        let
+        // Initialisation des sélections pour les deux sections
+        setupSelection("taille-vehicule");
+        setupSelection("selection-gamme");
+    </script>
+</body>
+</html>
