@@ -182,7 +182,6 @@
             border-radius: 5px;
             color: #fff;
             transition: border 0.3s;
-            cursor: pointer;
         }
 
         .gamme-item img {
@@ -204,7 +203,18 @@
         .gamme-item.selected {
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
-    </style>
+
+        .gamme-item {
+            cursor: pointer;
+            border: 2px solid transparent;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+
+        .gamme-item.selected {
+            border-color: orange;
+        }
+     </style>
 </head>
 <body>
     <div class="container">
@@ -278,18 +288,26 @@
         </div>
 
         <div class="button-container">
-            <a href="continuer.html">Continuer</a>
+            <a href="#">Réserver</a>
         </div>
     </div>
 
     <script>
-        const monthNames = [
-            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
-            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-        ];
+        function setupSelection(sectionId) {
+            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    // Supprimer la classe "selected" de tous les éléments
+                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
+                    // Ajouter la classe "selected" à l'élément cliqué
+                    item.classList.add("selected");
+                });
+            });
+        }
 
-        const today = new Date();
-        let currentMonth = today.getMonth();
-        let currentYear = today.getFullYear();
-
-        const monthSelect = document.get
+        // Initialiser la sélection des véhicules et des gammes
+        setupSelection("taille-vehicule");
+        setupSelection("selection-gamme");
+    </script>
+</body>
+</html>
