@@ -204,7 +204,7 @@
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
 
-      .gamme-item {
+        .gamme-item {
             cursor: pointer;
             border: 2px solid transparent;
             padding: 10px;
@@ -214,7 +214,7 @@
         .gamme-item.selected {
             border-color: orange;
         }
-     </style>
+    </style>
 </head>
 <body>
     <div class="container">
@@ -284,31 +284,5 @@
                     <h3>Gamme +</h3>
                     <p>Gamme classique avec wifi, couchages, toilettes, tiroir isotherme, mini-réfrigérateur, literie</p>
                 </div>
-            </div>
-        </div>
+            </
 
-        <div class="button-container">
-            <a href="continuer.html">Continuer</a>
-        </div>
-    </div>
-
-    <script>
-        // Correction de la sélection des véhicules et gammes
-        function setupSelection(sectionId) {
-            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);  // Correction ici avec le bon sélecteur
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    // Retirer la classe 'selected' de tous les éléments
-                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
-                    // Ajouter la classe 'selected' à l'élément cliqué
-                    item.classList.add("selected");
-                });
-            });
-        }
-
-        // Initialisation des sélections pour les deux sections
-        setupSelection("taille-vehicule");
-        setupSelection("selection-gamme");
-    </script>
-</body>
-</html>
