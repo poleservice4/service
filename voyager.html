@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organisation du Voyage</title>
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -203,8 +203,7 @@
         .gamme-item.selected {
             border: 2px solid #FF6600; /* Bordure orange pour l'élément sélectionné */
         }
-
-        .gamme-item {
+.gamme-item {
             cursor: pointer;
             border: 2px solid transparent;
             padding: 10px;
@@ -284,5 +283,180 @@
                     <h3>Gamme +</h3>
                     <p>Gamme classique avec wifi, couchages, toilettes, tiroir isotherme, mini-réfrigérateur, literie</p>
                 </div>
-            </
+            </div>
+        </div>
 
+        <div class="button-container">
+            <a href="continuer.html">Continuer</a>
+        </div>
+    </div>
+
+    <script>
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const monthSelect = document.getElementById("month-select");
+        const yearSelect = document.getElementById("year-select");
+        const calendarTable = document.getElementById("calendar-table").querySelector("tbody");
+        const horairesSection = document.getElementById("horaires-section");
+        const horairesList = document.getElementById("horaires-list");
+
+        function populateMonthSelect() {
+            monthSelect.innerHTML = "";
+            for (let i = 0; i < monthNames.length; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = monthNames[i];
+                if (i === currentMonth) option.selected = true;
+                monthSelect.appendChild(option);
+            }
+        }
+
+        function populateYearSelect() {
+            yearSelect.innerHTML = "";
+            for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                if (i === currentYear) option.selected = true;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        function generateCalendar(month, year) {
+            calendarTable.innerHTML = "";
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            const rows = Math.ceil((daysInMonth + firstDay) / 7);
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement("td");
+
+                    if ((i === 0 && j < (firstDay === 0 ? 6 : firstDay - 1)) || day > daysInMonth) {
+                        cell.textContent = "";
+                    } else {
+                        cell.textContent = day;
+                        cell.addEventListener("click", () => {
+                            document.querySelectorAll("td.active").forEach(td => td.classList.remove("active"));
+                            cell.classList.add("active");
+                            generateHoraires(day, month, year);
+                        });
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendarTable.appendChild(row);
+            }
+        }
+
+        function generateHoraires(day, month, year) {
+            horairesSection.style.display = 'block';
+            horairesList.innerHTML = '';
+
+            const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+            const times = ["00", "15", "30", "45"];
+
+            let horairesDispo = [];
+            while (horairesDispo.length < 6) {
+                const randomHour = hours[Math.floor(Math.random() * hours.length)];
+                const randomMinute = times[Math.floor(Math.random() * times.length)];
+                const time = `${randomHour}:${randomMinute}`;
+
+                if (!horairesDispo.includes(time)) {
+                    horairesDispo.push(time);
+                }
+            }
+
+            horairesDispo.sort((a, b) => {
+                const [aHour, aMinute] = a.split(':').map(Number);
+                const [bHour, bMinute] = b.split(':').map(Number);
+                return aHour - bHour || aMinute - bMinute;
+            });
+
+            horairesDispo.forEach(time => {
+                const button = document.createElement("button");
+                button.textContent = time;
+                button.addEventListener("click", () => {
+                    document.querySelectorAll(".horaires button.selected").forEach(btn => btn.classList.remove("selected"));
+                    button.classList.add("selected");
+                });
+                horairesList.appendChild(button);
+            });
+        }
+
+        document.getElementById("prev-month").addEventListener("click", () => {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
+            populateYearSelect();
+        });
+
+        document.getElementById("next-month").addEventListener("click", () => {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            generateCalendar(currentMonth, currentYear);
+            populateMonthSelect();
+            populateYearSelect();
+        });
+
+        document.getElementById("prev-year").addEventListener("click", () => {
+            currentYear--;
+            generateCalendar(currentMonth, currentYear);
+            populateYearSelect();
+        });
+
+        document.getElementById("next-year").addEventListener("click", () => {
+            currentYear++;
+            generateCalendar(currentMonth, currentYear);
+            populateYearSelect();
+        });
+
+        monthSelect.addEventListener("change", (event) => {
+            currentMonth = parseInt(event.target.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        yearSelect.addEventListener("change", (event) => {
+            currentYear = parseInt(event.target.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        function setupSelection(sectionId) {
+            const items = document.querySelectorAll(`#${sectionId} .gamme-item`);
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    document.querySelectorAll(`#${sectionId} .gamme-item.selected`).forEach(selected => selected.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
+            });
+        }
+
+        setupSelection("taille-vehicule");
+        setupSelection("selection-gamme");
+
+        populateMonthSelect();
+        populateYearSelect();
+        generateCalendar(currentMonth, currentYear);
+    </script>
+</body>
+</html>
